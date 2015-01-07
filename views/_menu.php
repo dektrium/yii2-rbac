@@ -36,6 +36,10 @@ use yii\helpers\Html;
             'url'   => ['/rbac/permission/index'],
         ],
         [
+            'label' => Yii::t('rbac', 'Rules'),
+            'url'   => ['/rbac/rules/index'],
+        ],
+        [
             'label' => Yii::t('rbac', 'Assignments'),
             'url'   => ['/rbac/assignment/index'],
         ],
