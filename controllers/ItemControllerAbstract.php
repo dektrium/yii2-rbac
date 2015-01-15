@@ -77,7 +77,6 @@ abstract class ItemControllerAbstract extends Controller
         $this->performAjaxValidation($model);
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
-
             return $this->redirect(['index']);
         }
 

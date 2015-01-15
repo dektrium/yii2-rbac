@@ -10,100 +10,25 @@
  */
 
 namespace dektrium\rbac\models;
-
-use yii\base\Model;
+use yii\helpers\ArrayHelper;
+use yii\rbac\Item;
 
 /**
  * @author Dmitry Erofeev <dmeroff@gmail.com>
  */
-class Permission extends Model
+class Permission extends AuthItem
 {
-    /** @var string */
-    public $name;
-
-    /** @var string */
-    public $description;
-
-    /** @var string */
-    public $rule;
-
-    /** @var \yii\rbac\Permission */
-    public $item;
-
     /** @inheritdoc */
-    public function init()
+    public function getUnassignedItems()
     {
-        parent::init();
-        if ($this->item instanceof \yii\rbac\Permission) {
-            $this->name        = $this->item->name;
-            $this->description = $this->item->description;
-        }
+        return ArrayHelper::map($this->manager->getItems(Item::TYPE_PERMISSION, $this->item !== null ? [$this->item->name] : []), 'name', function ($item) {
+            return empty($item->description) ? $item->name : $item->name . ' (' . $item->description . ')';
+        });
     }
 
     /** @inheritdoc */
-    public function scenarios()
+    protected function createItem($name)
     {
-        return [
-            'create' => ['name', 'description', 'rule'],
-            'update' => ['name', 'description', 'rule'],
-        ];
-    }
-
-    /** @inheritdoc */
-    public function rules()
-    {
-        return [
-            ['name', 'required'],
-            [['name', 'rule'], 'match', 'pattern' => '/^[\w-]+$/'],
-            [['name', 'description', 'rule'], 'trim'],
-            ['name', function () {
-                if (\Yii::$app->authManager->getPermission($this->name) !== null) {
-                    $this->addError('name', \Yii::t('rbac', 'Permission with such name already exists'));
-                }
-            }, 'when' => function () {
-                return $this->scenario == 'create' || $this->item->name != $this->name;
-            }],
-            ['rule', function () {
-                if (\Yii::$app->authManager->getRule($this->rule) === null) {
-                    $this->addError('rule', \Yii::t('rbac', 'There is no rule with such name'));
-                }
-            }]
-        ];
-    }
-
-    /**
-     * Saves permission.
-     *
-     * @return bool
-     */
-    public function save()
-    {
-        if ($this->validate() == false) {
-            return false;
-        }
-
-        $manager = \Yii::$app->authManager;
-
-        if ($isNewItem = ($this->item === null)) {
-            $this->item = $manager->createPermission($this->name);
-        } else {
-            $oldName = $this->item->name;
-        }
-
-        $this->item->name        = $this->name;
-        $this->item->description = $this->description;
-
-        // TODO: add rules management
-        // TODO: add parent management
-
-        if ($isNewItem) {
-            \Yii::$app->session->setFlash('success', \Yii::t('rbac', 'Permission has been created'));
-            $manager->add($this->item);
-        } else {
-            \Yii::$app->session->setFlash('success', \Yii::t('rbac', 'Permission has been updated'));
-            $manager->update($oldName, $this->item);
-        }
-
-        return true;
+        return $this->manager->createPermission($name);
     }
 }
