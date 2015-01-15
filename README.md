@@ -23,10 +23,6 @@ And run following command to make **composer** download and install Yii2-rbac:
 $ php composer.phar update
 ```
 
-## How to use
-
-Go to `/rbac/role/index` route.
-
 ## FAQ
 
 #### How to use?
