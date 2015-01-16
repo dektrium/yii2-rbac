@@ -5,23 +5,9 @@ Yii2-rbac provides a web interface for advanced access control and includes foll
 
 > **NOTE:** Module is not yet in alpha version. Use it on your own risk. Some features are missing. Anything can be changed at any time.
 
-## Installation
+## Documentation
 
-Add Yii2-rbac to the require section of your **composer.json** file:
-
-```js
-{
-    "require": {
-        "dektrium/yii2-rbac": "dev-master"
-    }
-}
-```
-
-And run following command to make **composer** download and install Yii2-rbac:
-
-```bash
-$ php composer.phar update
-```
+[Installation instructions](docs/installation.md) | [Definitive guide to Yii2-rbac](docs/README.md)
 
 ## FAQ
 

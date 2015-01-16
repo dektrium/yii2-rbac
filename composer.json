@@ -23,5 +23,8 @@
     "psr-4": {
       "dektrium\\rbac\\": ""
     }
+  },
+  "extra": {
+    "bootstrap": "dektrium\\rbac\\Bootstrap"
   }
 }
