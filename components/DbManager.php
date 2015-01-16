@@ -12,13 +12,14 @@
 namespace dektrium\rbac\components;
 
 use yii\db\Query;
+use yii\rbac\DbManager as BaseDbManager;
 
 /**
  * This Auth manager changes visibility and signature of some methods from \yii\rbac\DbManager.
  *
  * @author Dmitry Erofeev <dmeroff@gmail.com>
  */
-class DbManager extends \yii\rbac\DbManager
+class DbManager extends BaseDbManager implements ManagerInterface
 {
     /**
      * @param  int|null $type         If null will return all auth items.

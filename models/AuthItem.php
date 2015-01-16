@@ -43,7 +43,7 @@ abstract class AuthItem extends Model
     public function init()
     {
         parent::init();
-        $this->manager = \Yii::$container->get(DbManager::className());
+        $this->manager = \Yii::$app->authManager;
         if ($this->item instanceof Item) {
             $this->name        = $this->item->name;
             $this->description = $this->item->description;

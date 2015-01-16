@@ -21,14 +21,4 @@ class Module extends \yii\base\Module
 
     /** @var string */
     public $defaultRoute = 'role/index';
-
-    /** @inheritdoc */
-    public function init()
-    {
-        parent::init();
-        \Yii::$app->get('i18n')->translations['rbac*'] = [
-            'class'    => 'yii\i18n\PhpMessageSource',
-            'basePath' => __DIR__ . '/messages',
-        ];
-    }
 }
