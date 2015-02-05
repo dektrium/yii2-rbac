@@ -14,7 +14,6 @@
  */
 
 use yii\bootstrap\Nav;
-use yii\helpers\Html;
 
 ?>
 
@@ -34,14 +33,6 @@ use yii\helpers\Html;
         [
             'label' => Yii::t('rbac', 'Permissions'),
             'url'   => ['/rbac/permission/index'],
-        ],
-        [
-            'label' => Yii::t('rbac', 'Rules'),
-            'url'   => ['/rbac/rules/index'],
-        ],
-        [
-            'label' => Yii::t('rbac', 'Assignments'),
-            'url'   => ['/rbac/assignment/index'],
         ],
     ],
 ]) ?>

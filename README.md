@@ -23,9 +23,8 @@ Contributing instructions are located in [CONTRIBUTING.md](CONTRIBUTING.md) file
 
 ## Roadmap
 
-- [ ] Managing roles
-- [ ] Managing permissions
-- [ ] Managing rules
+- [*] Managing roles
+- [*] Managing permissions
 - [ ] Assigning auth items to users
 - [ ] Documentation
 - [ ] Managing default roles

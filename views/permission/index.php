@@ -30,8 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= Html::a(Yii::t('rbac', 'Create new role'), ['/rbac/role/create'], ['class' => 'btn btn-success']) ?>
 
     <?= Html::a(Yii::t('rbac', 'Create new permission'), ['/rbac/permission/create'], ['class' => 'btn btn-success']) ?>
-
-    <?= Html::a(Yii::t('rbac', 'Create new rule'), ['/rbac/rule/create'], ['class' => 'btn btn-success']) ?>
 </div>
 
 <?= GridView::widget([

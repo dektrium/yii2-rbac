@@ -11,9 +11,7 @@
 
 namespace dektrium\rbac\models;
 
-use dektrium\rbac\components\DbManager;
 use yii\base\Model;
-use yii\helpers\ArrayHelper;
 use yii\rbac\Item;
 
 /**
@@ -48,6 +46,9 @@ abstract class AuthItem extends Model
             $this->name        = $this->item->name;
             $this->description = $this->item->description;
             $this->children    = array_keys($this->manager->getChildren($this->item->name));
+            if ($this->item->ruleName !== null) {
+                $this->rule = get_class($this->manager->getRule($this->item->ruleName));
+            }
         }
     }
 
@@ -65,7 +66,7 @@ abstract class AuthItem extends Model
     {
         return [
             ['name', 'required'],
-            [['name', 'rule'], 'match', 'pattern' => '/^[\w-]+$/'],
+            ['name', 'match', 'pattern' => '/^[\w-]+$/'],
             [['name', 'description', 'rule'], 'trim'],
             ['name', function () {
                 if ($this->manager->getItem($this->name) !== null) {
@@ -74,18 +75,28 @@ abstract class AuthItem extends Model
             }, 'when' => function () {
                 return $this->scenario == 'create' || $this->item->name != $this->name;
             }],
-            ['rule', function () {
-                if ($this->manager->getRule($this->rule) === null) {
-                    $this->addError('rule', \Yii::t('rbac', 'There is no rule with such name'));
-                }
-            }],
             ['children', function () {
                 foreach ($this->children as $child) {
                     if ($this->manager->getItem($child) == null) {
                         $this->addError('children', \Yii::t('rbac', 'There is neither role nor permission with name "' . $child .  '"'));
                     }
                 }
-            }]
+            }],
+            ['rule', function () {
+                try {
+                    $class = new \ReflectionClass($this->rule);
+                } catch (\Exception $ex) {
+                    $this->addError('rule', \Yii::t('rbac', 'Class "{0}" does not exist', $this->rule));
+                    return;
+                }
+
+                if ($class->isInstantiable() == false) {
+                    $this->addError('rule', \Yii::t('rbac', 'Rule class can not be instantiated'));
+                }
+                if ($class->isSubclassOf('\yii\rbac\Rule') == false) {
+                    $this->addError('rule', \Yii::t('rbac', 'Rule class must extend "yii\rbac\Rule"'));
+                }
+            }],
         ];
     }
 
@@ -109,8 +120,16 @@ abstract class AuthItem extends Model
         $this->item->name        = $this->name;
         $this->item->description = $this->description;
 
-        // TODO: add rules assignment
-
+        if (!empty($this->rule)) {
+            $rule = \Yii::createObject($this->rule);
+            if (null === ($rule = $this->manager->getRule($rule->name))) {
+                $this->manager->add($rule);
+            }
+            $this->item->ruleName = $rule->name;
+        } else {
+            $this->item->ruleName = null;
+        }
+  
         if ($isNewItem) {
             \Yii::$app->session->setFlash('success', \Yii::t('rbac', 'Item has been created'));
             $this->manager->add($this->item);

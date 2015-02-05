@@ -28,6 +28,8 @@ use yii\helpers\Html;
 
 <?= $form->field($model, 'description') ?>
 
+<?= $form->field($model, 'rule') ?>
+
 <?= $form->field($model, 'children')->listBox($model->getUnassignedItems(), ['id' => 'children', 'multiple' => true]) ?>
 
 <?= Html::submitButton(Yii::t('rbac', 'Save'), ['class' => 'btn btn-success btn-block']) ?>
