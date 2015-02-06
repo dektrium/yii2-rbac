@@ -38,14 +38,23 @@ $this->params['breadcrumbs'][] = $this->title;
         [
             'attribute' => 'name',
             'header'    => Yii::t('rbac', 'Name'),
+            'options'   => [
+                'style' => 'width: 20%'
+            ],
         ],
         [
             'attribute' => 'description',
             'header'    => Yii::t('rbac', 'Description'),
+            'options'   => [
+                'style' => 'width: 55%'
+            ],
         ],
         [
             'attribute' => 'ruleName',
             'header'    => Yii::t('rbac', 'Rule name'),
+            'options'   => [
+                'style' => 'width: 20%'
+            ],
         ],
         [
             'class'      => ActionColumn::className(),
@@ -53,6 +62,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'urlCreator' => function ($action, $model) {
                 return Url::to(['/rbac/role/' . $action, 'name' => $model->name]);
             },
+            'options' => [
+                'style' => 'width: 5%'
+            ],
         ]
     ],
 ]) ?>
