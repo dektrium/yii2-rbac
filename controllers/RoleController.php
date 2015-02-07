@@ -11,9 +11,9 @@
 
 namespace dektrium\rbac\controllers;
 
-use yii\data\ArrayDataProvider;
 use yii\rbac\Role;
 use yii\web\NotFoundHttpException;
+use yii\rbac\Item;
 
 /**
  * @author Dmitry Erofeev <dmeroff@gmail.com>
@@ -22,15 +22,8 @@ class RoleController extends ItemControllerAbstract
 {
     /** @var string */
     protected $modelClass = 'dektrium\rbac\models\Role';
-
-    /** @inheritdoc */
-    protected function getDataProvider()
-    {
-        return \Yii::createObject([
-            'class'     => ArrayDataProvider::className(),
-            'allModels' => \Yii::$app->authManager->getRoles(),
-        ]);
-    }
+    
+    protected $type = Item::TYPE_ROLE;
 
     /** @inheritdoc */
     protected function getItem($name)

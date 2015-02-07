@@ -11,9 +11,9 @@
 
 namespace dektrium\rbac\controllers;
 
-use yii\data\ArrayDataProvider;
 use yii\rbac\Permission;
 use yii\web\NotFoundHttpException;
+use yii\rbac\Item;
 
 /**
  * @author Dmitry Erofeev <dmeroff@gmail.com>
@@ -22,15 +22,9 @@ class PermissionController extends ItemControllerAbstract
 {
     /** @var string */
     protected $modelClass = 'dektrium\rbac\models\Permission';
-
-    /** @inheritdoc */
-    protected function getDataProvider()
-    {
-        return \Yii::createObject([
-            'class'     => ArrayDataProvider::className(),
-            'allModels' => \Yii::$app->authManager->getPermissions(),
-        ]);
-    }
+    
+    /** @var int */
+    protected $type = Item::TYPE_PERMISSION;
 
     /** @inheritdoc */
     protected function getItem($name)

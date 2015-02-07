@@ -17,6 +17,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
+use dektrium\rbac\models\Search;
 
 /**
  * @author Dmitry Erofeev <dmeroff@gmail.com>
@@ -24,16 +25,16 @@ use yii\widgets\ActiveForm;
 abstract class ItemControllerAbstract extends Controller
 {
     /**
-     * @return \yii\data\DataProviderInterface
-     */
-    abstract protected function getDataProvider();
-
-    /**
      * @param  string $name
      * @return \dektrium\rbac\models\Role|\dektrium\rbac\models\Permission
      */
     abstract protected function getItem($name);
 
+    /**
+     * @var int
+     */
+    protected $type;
+    
     /**
      * @var string
      */
@@ -48,6 +49,9 @@ abstract class ItemControllerAbstract extends Controller
         if ($this->modelClass === null) {
             throw new InvalidConfigException('Model class should be set');
         }
+        if ($this->type === null) {
+            throw new InvalidConfigException('Auth item type should be set');
+        }
     }
 
     /**
@@ -56,8 +60,10 @@ abstract class ItemControllerAbstract extends Controller
      */
     public function actionIndex()
     {
+        $filterModel = new Search($this->type);
         return $this->render('index', [
-            'dataProvider' => $this->getDataProvider(),
+            'filterModel'  => $filterModel,
+            'dataProvider' => $filterModel->search(\Yii::$app->request->get()),
         ]);
     }
 
