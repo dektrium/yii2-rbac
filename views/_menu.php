@@ -27,6 +27,11 @@ use yii\bootstrap\Nav;
     ],
     'items' => [
         [
+            'label'   => Yii::t('rbac', 'Users'),
+            'url'     => ['/user/admin/index'],
+            'visible' => isset(Yii::$app->extensions['dektrium/yii2-user']),
+        ],
+        [
             'label' => Yii::t('rbac', 'Roles'),
             'url'   => ['/rbac/role/index'],
         ],
