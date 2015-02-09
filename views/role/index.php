@@ -15,7 +15,7 @@
  * @var $this         yii\web\View
  */
 
-use yii\helpers\Html;
+
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\helpers\Url;
@@ -25,13 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<?= $this->render('/_menu.php') ?>
-
-<div style="padding: 10px 0">
-    <?= Html::a(Yii::t('rbac', 'Create new role'), ['/rbac/role/create'], ['class' => 'btn btn-success']) ?>
-
-    <?= Html::a(Yii::t('rbac', 'Create new permission'), ['/rbac/permission/create'], ['class' => 'btn btn-success']) ?>
-</div>
+<?php $this->beginContent('@dektrium/rbac/views/layout.php') ?>
 
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
@@ -70,3 +64,5 @@ $this->params['breadcrumbs'][] = $this->title;
         ]
     ],
 ]) ?>
+
+<?php $this->endContent() ?>

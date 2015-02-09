@@ -17,13 +17,9 @@ use yii\bootstrap\Nav;
 
 ?>
 
-<?= $this->render('/_alert', [
-    'module' => Yii::$app->getModule('rbac'),
-]) ?>
-
 <?= Nav::widget([
     'options' => [
-        'class' => 'nav nav-tabs',
+        'class' => 'nav-tabs'
     ],
     'items' => [
         [
@@ -39,5 +35,18 @@ use yii\bootstrap\Nav;
             'label' => Yii::t('rbac', 'Permissions'),
             'url'   => ['/rbac/permission/index'],
         ],
-    ],
+        [
+            'label' => Yii::t('rbac', 'Create'),
+            'items' => [
+                [
+                    'label' => Yii::t('rbac', 'New role'),
+                    'url'   => ['/rbac/role/create']
+                ],
+                [
+                    'label' => Yii::t('rbac', 'New permission'),
+                    'url'   => ['/rbac/permission/create']
+                ]
+            ]
+        ]
+    ]
 ]) ?>

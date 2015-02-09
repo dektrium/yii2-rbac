@@ -9,20 +9,20 @@
  * file that was distributed with this source code.
  */
 
+use yii\helpers\Html;
+
 /**
- * @var $model dektrium\rbac\models\Role
  * @var $this  yii\web\View
  */
 
-$this->title = Yii::t('rbac', 'Create new role');
-$this->params['breadcrumbs'][] = $this->title;
-
 ?>
 
-<?php $this->beginContent('@dektrium/rbac/views/layout.php') ?>
-
-<?= $this->render('_form', [
-    'model' => $model,
+<?= $this->render('/_alert', [
+    'module' => Yii::$app->getModule('rbac'),
 ]) ?>
 
-<?php $this->endContent() ?>
+<?= $this->render('_menu') ?>
+
+<div style="padding: 10px 0">
+    <?= $content ?>
+</div>

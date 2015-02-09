@@ -19,8 +19,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<?= $this->render('/_menu.php') ?>
+<?php $this->beginContent('@dektrium/rbac/views/layout.php') ?>
 
 <?= $this->render('_form', [
     'model' => $model,
 ]) ?>
+
+<?php $this->endContent() ?>
