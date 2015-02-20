@@ -13,6 +13,7 @@ namespace dektrium\rbac\models;
 
 use yii\base\Model;
 use yii\rbac\Item;
+use dektrium\rbac\validators\RbacValidator;
 
 /**
  * @author Dmitry Erofeev <dmeroff@gmail.com>
@@ -75,13 +76,7 @@ abstract class AuthItem extends Model
             }, 'when' => function () {
                 return $this->scenario == 'create' || $this->item->name != $this->name;
             }],
-            ['children', function () {
-                foreach ($this->children as $child) {
-                    if ($this->manager->getItem($child) == null) {
-                        $this->addError('children', \Yii::t('rbac', 'There is neither role nor permission with name "' . $child .  '"'));
-                    }
-                }
-            }],
+            ['children', RbacValidator::className()],
             ['rule', function () {
                 try {
                     $class = new \ReflectionClass($this->rule);

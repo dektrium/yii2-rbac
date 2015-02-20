@@ -28,6 +28,7 @@ Contributing instructions are located in [CONTRIBUTING.md](CONTRIBUTING.md) file
 - [ ] Assigning auth items to users
 - [ ] Documentation
 - [ ] Managing default roles
+- [ ] Caching
 
 ## License
 
