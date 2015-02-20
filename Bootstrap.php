@@ -25,16 +25,21 @@ class Bootstrap implements BootstrapInterface
     public function bootstrap($app)
     {
         // register auth manager
-        if (\Yii::$app->authManager == null || (\Yii::$app->authManager instanceof ManagerInterface) == false) {
-            \Yii::$app->set('authManager', [
+        if ($app->authManager == null || ($app->authManager instanceof ManagerInterface) == false) {
+            $app->set('authManager', [
                 'class' => DbManager::className(),
             ]);
         }
 
         // register translations
-        \Yii::$app->get('i18n')->translations['rbac*'] = [
+        $app->get('i18n')->translations['rbac*'] = [
             'class'    => 'yii\i18n\PhpMessageSource',
             'basePath' => __DIR__ . '/messages',
         ];
+        
+        // if dektrium/user extension is installed, copy admin list from there
+        if (isset($app->extensions['dektrium/yii2-user'])) {
+            $app->getModule('rbac')->admins = $app->getModule('user')->admins;
+        }
     }
 }
