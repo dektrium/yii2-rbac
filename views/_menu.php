@@ -39,6 +39,11 @@ use yii\bootstrap\Nav;
             'label' => Yii::t('rbac', 'Create'),
             'items' => [
                 [
+                    'label'   => Yii::t('rbac', 'New user'),
+                    'url'     => ['/user/admin/create'],
+                    'visible' => isset(Yii::$app->extensions['dektrium/yii2-user']),
+                ],
+                [
                     'label' => Yii::t('rbac', 'New role'),
                     'url'   => ['/rbac/role/create']
                 ],
