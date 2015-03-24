@@ -24,6 +24,10 @@ class Bootstrap implements BootstrapInterface
     /** @inheritdoc */
     public function bootstrap($app)
     {
+        if ($app instanceof \yii\console\Application) {
+            $app->setModule('rbac', ['class' => Module::className()]);
+        }
+        
         // register auth manager
         if ($app->authManager == null || ($app->authManager instanceof ManagerInterface) == false) {
             $app->set('authManager', [
