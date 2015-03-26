@@ -24,7 +24,7 @@ use yii\bootstrap\Nav;
     'items' => [
         [
             'label'   => Yii::t('rbac', 'Users'),
-            'url'     => ['/user/admin/index'],
+            'url'     => ['/rbac/admin/index'],
             'visible' => isset(Yii::$app->extensions['dektrium/yii2-user']),
         ],
         [
@@ -40,7 +40,7 @@ use yii\bootstrap\Nav;
             'items' => [
                 [
                     'label'   => Yii::t('rbac', 'New user'),
-                    'url'     => ['/user/admin/create'],
+                    'url'     => ['/rbac/admin/create'],
                     'visible' => isset(Yii::$app->extensions['dektrium/yii2-user']),
                 ],
                 [
