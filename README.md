@@ -1,34 +1,25 @@
-Yii2-rbac
-=========
+# Yii2-rbac [![Total Downloads](https://img.shields.io/packagist/dt/dektrium/yii2-rbac.svg?style=flat-square)](https://packagist.org/packages/dektrium/yii2-rbac) [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
 Yii2-rbac provides a web interface for advanced access control and includes following features:
 
-> **NOTE:** Module is not yet in alpha version. Use it on your own risk. Some features are missing. Anything can be changed at any time.
+- Allows CRUD operations for roles and permissions
+- Allows to assign multiple roles or permissions to user (done with widget)
+- Integrated with [Yii2-user](https://github.com/dektrium/yii2-user) - flexible user management module
+
+> **NOTE:** Module is in initial development. Anything may change at any time.
 
 ## Documentation
 
 [Installation instructions](docs/installation.md) | [Definitive guide to Yii2-rbac](docs/README.md)
 
-## FAQ
+## Contributing to this project
 
-#### How to use?
-Install it and go to `/rbac/role/index` route.
+Anyone and everyone is welcome to contribute. Please take a moment to
+review the [guidelines for contributing](CONTRIBUTING.md).
 
-#### Why feature *X* is missing?
-Because it is not implemented yet or will never be implemented. Check out roadmap.
-
-#### How to contribute?
-
-Contributing instructions are located in [CONTRIBUTING.md](CONTRIBUTING.md) file.
-
-## Roadmap
-
-- [x] Managing roles
-- [x] Managing permissions
-- [ ] Assigning auth items to users
-- [ ] Documentation
-- [ ] Managing default roles
-- [ ] Caching
+* [Bug reports](CONTRIBUTING.md#bugs)
+* [Feature requests](CONTRIBUTING.md#features)
+* [Pull requests](CONTRIBUTING.md#pull-requests)
 
 ## License
 
