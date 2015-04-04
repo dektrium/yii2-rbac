@@ -29,6 +29,24 @@ class Module extends BaseModule
     /** @var array */
     public $admins = [];
     
+    /**
+     * use for RBAC
+     * @var string RBAC admin role name
+     */
+    public $adminRole = false;
+    
+    /**
+     * use for RBAC
+     * @var string RBAC user admin role name
+     */
+    public $userAdminRole = false;
+
+    /**
+     * use for RBAC
+     * @var string RBAC user view role name
+     */
+    public $userViewRole = false;    
+    
     /** @inheritdoc */
     public function behaviors()
     {
@@ -40,7 +58,7 @@ class Module extends BaseModule
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function () {
-                            return in_array(Yii::$app->user->identity->username, $this->admins);
+                            return Yii::$app->user->identity->getIsAdmin();
                         },
                     ]
                 ],
