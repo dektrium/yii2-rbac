@@ -53,3 +53,32 @@ the migrations:
 $ php yii migrate/up --migrationPath=@yii/rbac/migrations
 $ php yii migrate/up --migrationPath=@vendor/dektrium/yii2-rbac/migrations
 ```
+
+Step 4: Switch yii2-rbac to role acces control mode for DbManager
+
+Actualy users can manage administrators, what defined in configuration file. 
+You can not deligate user administration to other user, who not administrator.
+
+Migration created roles: Admin, UserAdmin, UserView.
+
+Assign for actual users corect roles: Admin, UserAdmin, UserView.
+
+
+Define roles in your main configuration file roles :
+
+```php
+...
+'modules' => [
+    ...
+    'rbac' => [
+        'class' => 'dektrium\rbac\Module',
+        'adminRole' => 'Admin',
+        'userAdminRole' => 'UserAdmin',
+        'userViewRole'  => 'UserView',        
+    ],
+    ...
+],
+...
+```
+
+
