@@ -126,10 +126,14 @@ abstract class AuthItem extends Model
         }
   
         if ($isNewItem) {
+            if (!($app instanceof \yii\console\Application)){ 
             \Yii::$app->session->setFlash('success', \Yii::t('rbac', 'Item has been created'));
+            }
             $this->manager->add($this->item);
         } else {
+            if (!($app instanceof \yii\console\Application)){ 
             \Yii::$app->session->setFlash('success', \Yii::t('rbac', 'Item has been updated'));
+            }
             $this->manager->update($oldName, $this->item);
         }
 
