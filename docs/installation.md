@@ -51,5 +51,4 @@ the migrations:
 
 ```bash
 $ php yii migrate/up --migrationPath=@yii/rbac/migrations
-$ php yii migrate/up --migrationPath=@vendor/dektrium/yii2-rbac/migrations
 ```
