@@ -117,7 +117,7 @@ abstract class AuthItem extends Model
 
         if (!empty($this->rule)) {
             $rule = \Yii::createObject($this->rule);
-            if (null === ($rule = $this->manager->getRule($rule->name))) {
+            if (null === $this->manager->getRule($rule->name)) {
                 $this->manager->add($rule);
             }
             $this->item->ruleName = $rule->name;
