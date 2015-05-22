@@ -1,4 +1,5 @@
 ﻿<?php
+<?php
 /**
  * Message translations.
  *
@@ -17,10 +18,10 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Assignments have been updated' => '',
-    'Auth item with such name already exists' => '',
+    'Assignments have been updated' => 'Роли были назначены',
+    'Auth item with such name already exists' => 'Элемент с таким именем уже существует',
     'Class "{0}" does not exist' => 'Класс "{0}" отсутствует',
-    'Classname of the rule associated with this item' => '',
+    'Classname of the rule associated with this item' => 'Имя класса правил, связанных с этим элементом',
     'Create' => 'Создать',
     'Create new permission' => 'Создать новое разрешение',
     'Create new role' => 'Создать новую роль',
@@ -34,13 +35,13 @@ return [
     'New user' => 'Новый пользователь',
     'Permissions' => 'Разрешения',
     'Roles' => 'Роли',
-    'Rule class can not be instantiated' => '',
-    'Rule class must extend "yii\rbac\Rule"' => '',
+    'Rule class can not be instantiated' => 'Объект класса правила не может быть создан',
+    'Rule class must extend "yii\rbac\Rule"' => 'Класс правил должен быть наследником класса "yii\rbac\Rule"',
     'Rule name' => 'Имя роли',
     'Save' => 'Сохранить',
-    'The item description (Optional).' => '',
+    'The item description (Optional).' => 'Описание (Необязательно)',
     'The name of the item.' => 'Имя элемента.',
-    'There is neither role nor permission with name "{0}"' => '',
+    'There is neither role nor permission with name "{0}"' => 'Не существует ни ролей ни разрешений с именем "{0}"',
     'Update assignments' => 'Обновление назначения',
     'Update permission' => 'Обновить разрешения',
     'Update role' => 'Обновить роль',
