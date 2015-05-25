@@ -134,6 +134,25 @@ abstract class AuthItem extends Model
         }
 
         if (is_array($this->children)) {
+            
+            #Fix - without this lines below, system is not excluding permissions even when deselected on update screen.
+            $current    = $this->manager->getChildren($this->item->name);
+            $toSave     = $this->children;
+            
+            foreach($toSave as $row){
+                if (isset($current[$row])){
+                    foreach($current as $item){
+                        if ($item->name != $row)
+                            $this->manager->removeChild($this->item, $item);        
+                    }
+                }
+                else{
+                    foreach($current as $item){
+                        $this->manager->removeChild($this->item, $item);        
+                    }
+                }
+            }
+            
             foreach ($this->children as $name) {
                 $child = $this->manager->getItem($name);
                 if ($this->manager->hasChild($this->item, $child) == false) {
