@@ -1,6 +1,8 @@
 # Yii2-rbac [![Total Downloads](https://img.shields.io/packagist/dt/dektrium/yii2-rbac.svg?style=flat-square)](https://packagist.org/packages/dektrium/yii2-rbac) [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE) [![Join the chat at https://gitter.im/dektrium/yii2-rbac](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dektrium/yii2-rbac?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
+[![Join the chat at https://gitter.im/dektrium/yii2-rbac](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dektrium/yii2-rbac?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Yii2-rbac provides a web interface for advanced access control and includes following features:
 
 - Allows CRUD operations for roles and permissions
