@@ -44,7 +44,7 @@ class Assignment extends Model
             throw new InvalidConfigException('user_id must be set');
         }
         
-        $this->items = array_keys($this->manager->getRolesByUser($this->user_id));
+        $this->items = array_keys($this->manager->getItemsByUser($this->user_id));
     }
 	
     /** @inheritdoc */
@@ -66,27 +66,23 @@ class Assignment extends Model
         if (!$this->validate()) {
             return false;
         }
-        
-        $assignedItems = $this->manager->getRolesByUser($this->user_id);
+
+        $assignedItems = $this->manager->getItemsByUser($this->user_id);
         $assignedItemsNames = array_keys($assignedItems);
-        
-        $revoke = array_diff($assignedItemsNames, $this->items);
-        
-        foreach ($revoke as $item) {
+
+        foreach (array_diff($assignedItemsNames, $this->items) as $item) {
             $this->manager->revoke($assignedItems[$item], $this->user_id);
         }
 
-        $assign = array_diff($this->items, $assignedItemsNames);
-        
-        foreach ($assign as $item) {
+        foreach (array_diff($this->items, $assignedItemsNames) as $item) {
             $this->manager->assign($this->manager->getItem($item), $this->user_id);
         }
-        
+
         $this->updated = true;
-        
+
         return true;
     }
-    
+
     /**
      * Returns all available auth items to be attached to user.
      * @return array
