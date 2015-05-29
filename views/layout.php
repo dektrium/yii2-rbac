@@ -9,8 +9,6 @@
  * file that was distributed with this source code.
  */
 
-use yii\helpers\Html;
-
 /**
  * @var $this  yii\web\View
  */
