@@ -45,4 +45,6 @@ return [
     'Update permission' => '修改权限',
     'Update role' => '修改角色',
     'Users' => '用户',
+    'Rule' => '规则',
+    'Children' => '子项',
 ];
