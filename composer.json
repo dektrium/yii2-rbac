@@ -1,18 +1,17 @@
 {
-  "name": "dektrium/yii2-rbac",
+  "name": "weison-tech/yii2-rbac",
   "description": "RBAC manager for Yii2",
   "keywords": ["yii2", "yii2-rbac", "rbac management", "dektrium", "rbac gui", "yii rbac", "rbac module"],
   "type": "yii2-extension",
   "license": "MIT",
   "support": {
-    "issues": "https://github.com/dektrium/yii2-rbac/issues?state=open",
-    "source": "https://github.com/dektrium/yii2-rbac"
+    "issues": "https://github.com/weison-tech/yii2-rbac/issues?state=open",
+    "source": "https://github.com/weison-tech/yii2-rbac"
   },
   "authors": [
     {
-      "name": "Dmitry Erofeev",
-      "email": "dmeroff@gmail.com",
-      "homepage": "http://dmeroff.ru"
+      "name": "xiaomalover",
+      "email": "xiaomalover@gmail.com"
     }
   ],
   "minimum-stability": "dev",
