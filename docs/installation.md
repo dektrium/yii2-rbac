@@ -15,7 +15,7 @@ Add Yii2-rbac to the require section of your **composer.json** file:
 ```js
 {
     "require": {
-        "dektrium/yii2-rbac": "dev-master"
+        "weison-tech/yii2-rbac": "dev-master"
     }
 }
 ```
