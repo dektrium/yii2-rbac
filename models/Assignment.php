@@ -51,7 +51,7 @@ class Assignment extends Model
     public function rules()
     {
         return [
-            [['items', 'user_id'], 'required'],
+            ['user_id', 'required'],
             ['items', RbacValidator::className()],
             ['user_id', 'integer']
         ];
@@ -65,6 +65,10 @@ class Assignment extends Model
     {
         if (!$this->validate()) {
             return false;
+        }
+
+        if (!is_array($this->items)) {
+            $this->items = [];
         }
 
         $assignedItems = $this->manager->getItemsByUser($this->user_id);
