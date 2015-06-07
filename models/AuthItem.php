@@ -170,4 +170,17 @@ abstract class AuthItem extends Model
      * @return \yii\rbac\Item
      */
     abstract protected function createItem($name);
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'name' => \Yii::t('rbac', 'Name'),
+            'description' => \Yii::t('rbac', 'Description'),
+            'rule' => \Yii::t('rbac', 'Rule'),
+            'children' => \Yii::t('rbac', 'Children'),  
+        ];
+    }
 }
