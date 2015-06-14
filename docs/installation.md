@@ -29,7 +29,7 @@ $ php composer.phar update
 Step 2: Configure your application
 ----------------------------------
 
-Add following lines to your main configuration file:
+Add rbac module to both web and console config files as follows:
 
 ```php
 ...
@@ -47,7 +47,7 @@ Step 3: Updating database schema
 --------------------------------
 
 After you downloaded and configured Yii2-rbac, the last thing you need to do is updating your database schema by applying
-the migrations:
+the migration:
 
 ```bash
 $ php yii migrate/up --migrationPath=@yii/rbac/migrations

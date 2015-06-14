@@ -1,6 +1,6 @@
 {
   "name": "dektrium/yii2-rbac",
-  "description": "RBAC manager for Yii2",
+  "description": "RBAC management module for Yii2",
   "keywords": ["yii2", "yii2-rbac", "rbac management", "dektrium", "rbac gui", "yii rbac", "rbac module"],
   "type": "yii2-extension",
   "license": "MIT",
