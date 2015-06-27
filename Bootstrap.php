@@ -27,10 +27,12 @@ class Bootstrap implements BootstrapInterface
     public function bootstrap($app)
     {
         // register translations
-        $app->get('i18n')->translations['rbac*'] = [
-            'class'    => 'yii\i18n\PhpMessageSource',
-            'basePath' => __DIR__ . '/messages',
-        ];
+        if (!isset($app->get('i18n')->translations['rbac*'])) {
+            $app->get('i18n')->translations['rbac*'] = [
+                'class'    => 'yii\i18n\PhpMessageSource',
+                'basePath' => __DIR__ . '/messages',
+            ];
+        }
             
         if ($this->checkRbacModuleInstalled($app)) {
             // register auth manager
