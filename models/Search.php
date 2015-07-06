@@ -69,7 +69,7 @@ class Search extends Model
                 ->andFilterWhere(['like', 'rule_name', $this->rule_name]);
         }
         
-        $dataProvider->allModels = $query->all();
+        $dataProvider->allModels = $query->all($this->manager->db);
         
         return $dataProvider;
     }
