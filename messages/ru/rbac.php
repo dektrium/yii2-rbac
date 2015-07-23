@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Message translations.
  *
@@ -36,7 +36,7 @@ return [
     'Roles' => 'Роли',
     'Rule class can not be instantiated' => 'Объект класса правила не может быть создан',
     'Rule class must extend "yii\rbac\Rule"' => 'Класс правил должен быть наследником класса "yii\rbac\Rule"',
-    'Rule name' => 'Имя роли',
+    'Rule name' => 'Условие',
     'Save' => 'Сохранить',
     'The item description (Optional).' => 'Описание (Необязательно)',
     'The name of the item.' => 'Имя элемента.',
@@ -45,4 +45,5 @@ return [
     'Update permission' => 'Обновить разрешения',
     'Update role' => 'Обновить роль',
     'Users' => 'Пользователи',
+    'Сhildren' => 'Приемники прав'
 ];
