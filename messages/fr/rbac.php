@@ -17,12 +17,12 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Assignments have been updated' => 'Les assignements ont été mises à jour',
+    'Assignments have been updated' => 'Les affectations ont été mises à jour',
     'Auth item with such name already exists' => 'L\'objet de Auth avec un nom identique existe déjà',
     'Class "{0}" does not exist' => 'La classe "{0}" n\'existe pas',
     'Classname of the rule associated with this item' => 'Le nom de la classe de la règle associée à cet objet',
     'Create' => 'Créer',
-    'Create new permission' => 'Créer nouvelle autorisation',
+    'Create new permission' => 'Créer nouvelle permission',
     'Create new role' => 'Créer nouveau rôle',
     'Description' => 'Description',
     'Invalid value' => 'Valeur invalide',
@@ -32,7 +32,7 @@ return [
     'New permission' => 'Nouveau autorisation',
     'New role' => 'Nouveau rôle',
     'New user' => 'Nouvel utilisateur',
-    'Permissions' => 'Autorisations',
+    'Permissions' => 'Permissions',
     'Roles' => 'Rôles',
     'Rule class can not be instantiated' => 'La classe de règle ne peut pas être instanciée',
     'Rule class must extend "yii\rbac\Rule"' => 'La classe de règle doit étendre "yii\rbac\Rule"',
@@ -41,8 +41,8 @@ return [
     'The item description (Optional).' => 'La description de l\'objet (Facultatif)',
     'The name of the item.' => 'Le nom de l\'objet.',
     'There is neither role nor permission with name "{0}"' => 'Il n\'y a ni rôle, ni l\'autorisation avec le nom "{0}"',
-    'Update assignments' => 'Modifier assignements',
-    'Update permission' => 'Modifier autorisation',
+    'Update assignments' => 'Modifier affectations',
+    'Update permission' => 'Modifier permission',
     'Update role' => 'Modifier rôle',
     'Users' => 'Utlisateurs',
 ];
