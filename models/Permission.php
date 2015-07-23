@@ -12,6 +12,7 @@
 namespace dektrium\rbac\models;
 use yii\helpers\ArrayHelper;
 use yii\rbac\Item;
+use Yii;
 
 /**
  * @author Dmitry Erofeev <dmeroff@gmail.com>
@@ -30,5 +31,18 @@ class Permission extends AuthItem
     protected function createItem($name)
     {
         return $this->manager->createPermission($name);
+    }
+    
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'name' => Yii::t('rbac', 'Name'),
+            'description' => Yii::t('rbac', 'Description'),
+            'rule' => Yii::t('rbac', 'Rule name'),
+            'children' => Yii::t('rbac', 'Сhildren'),
+        ];
     }
 }
