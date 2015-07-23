@@ -11,6 +11,7 @@
 
 namespace dektrium\rbac\models;
 
+use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -30,5 +31,18 @@ class Role extends AuthItem
     protected function createItem($name)
     {
         return $this->manager->createRole($name);
+    }
+    
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'name' => Yii::t('rbac', 'Name'),
+            'description' => Yii::t('rbac', 'Description'),
+            'rule' => Yii::t('rbac', 'Rule name'),
+            'children' => Yii::t('rbac', 'Сhildren'),
+        ];
     }
 }
