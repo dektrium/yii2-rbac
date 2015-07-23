@@ -31,4 +31,17 @@ class Role extends AuthItem
     {
         return $this->manager->createRole($name);
     }
+    
+       /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'name' => Yii::t('rbac', 'Name'),
+            'description' => Yii::t('rbac', 'Description'),
+            'rule' => Yii::t('rbac', 'Rule name'),
+            'children' => Yii::t('rbac', 'Сhildren'),
+        ];
+    }
 }
