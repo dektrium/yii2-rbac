@@ -12,6 +12,7 @@
 namespace dektrium\rbac\models;
 use yii\helpers\ArrayHelper;
 use yii\rbac\Item;
+use Yii;
 
 /**
  * @author Dmitry Erofeev <dmeroff@gmail.com>

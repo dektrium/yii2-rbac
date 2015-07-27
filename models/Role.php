@@ -11,6 +11,7 @@
 
 namespace dektrium\rbac\models;
 
+use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
