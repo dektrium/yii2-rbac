@@ -29,7 +29,7 @@ return [
     'Item has been created' => 'Objet a été crée',
     'Item has been updated' => 'Objet a été mis à jour',
     'Name' => 'Nom',
-    'New permission' => 'Nouveau autorisation',
+    'New permission' => 'Nouvelle permission',
     'New role' => 'Nouveau rôle',
     'New user' => 'Nouvel utilisateur',
     'Permissions' => 'Permissions',
