@@ -46,7 +46,15 @@ class Assignment extends Model
         
         $this->items = array_keys($this->manager->getItemsByUser($this->user_id));
     }
-	
+
+    /** @inheritdoc */
+    public function attributeLabels()
+    {
+        return [
+            'items' => \Yii::t('rbac', 'Items'),
+        ];
+    }
+
     /** @inheritdoc */
     public function rules()
     {

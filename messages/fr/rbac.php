@@ -29,6 +29,7 @@ return [
     'Invalid value' => 'Valeur invalide',
     'Item has been created' => 'Objet a été crée',
     'Item has been updated' => 'Objet a été mis à jour',
+    'Items' => 'Objets',
     'Name' => 'Nom',
     'New permission' => 'Nouveau autorisation',
     'New role' => 'Nouveau rôle',
