@@ -24,13 +24,13 @@ use yii\helpers\Html;
     'enableAjaxValidation'   => true,
 ]) ?>
 
-<?= $form->field($model, 'name') ?>
+<?= $form->field($model, 'name')->label(Yii::t('rbac', 'Name')) ?>
 
-<?= $form->field($model, 'description') ?>
+<?= $form->field($model, 'description')->label(Yii::t('rbac', 'Description')) ?>
 
-<?= $form->field($model, 'rule') ?>
+<?= $form->field($model, 'rule')->label(Yii::t('rbac', 'Rule')) ?>
 
-<?= $form->field($model, 'children')->widget(Select2::className(), [
+<?= $form->field($model, 'children')->label(Yii::t('rbac', 'Children'))->widget(Select2::className(), [
     'data' => $model->getUnassignedItems(),
     'options' => [
         'id' => 'children',
