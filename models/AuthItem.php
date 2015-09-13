@@ -54,6 +54,17 @@ abstract class AuthItem extends Model
     }
 
     /** @inheritdoc */
+    public function attributeLabels()
+    {
+        return [
+            'name' => \Yii::t('rbac', 'Name'),
+            'description' => \Yii::t('rbac', 'Description'),
+            'children' => \Yii::t('rbac', 'Children'),
+            'rule' => \Yii::t('rbac', 'Rule'),
+        ];
+    }
+
+    /** @inheritdoc */
     public function scenarios()
     {
         return [
