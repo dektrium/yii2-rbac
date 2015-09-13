@@ -38,7 +38,7 @@ return [
     'Roles' => 'Rollen',
     'Rule' => 'Rol',
     'Rule class can not be instantiated' => 'Rol classe kan niet worden geïnstantieerd',
-    'Rule class must extend "yii\rbac\Rule"' => 'Rol klas moet overerven van "yii\rbac\Rule"',
+    'Rule class must extend "yii\rbac\Rule"' => 'Rol classe moet overerven van "yii\rbac\Rule"',
     'Rule name' => 'Rol naam',
     'Save' => 'Opslaan',
     'The item description (Optional).' => 'Item omschrijving (optioneel)',
