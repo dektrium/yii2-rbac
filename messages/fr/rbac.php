@@ -31,7 +31,7 @@ return [
     'Item has been updated' => 'Objet a été mis à jour',
     'Items' => 'Objets',
     'Name' => 'Nom',
-    'New permission' => 'Nouveau autorisation',
+    'New permission' => 'Nouvelle permission',
     'New role' => 'Nouveau rôle',
     'New user' => 'Nouvel utilisateur',
     'Permissions' => 'Permissions',
