@@ -50,6 +50,30 @@ class DbManager extends BaseDbManager implements ManagerInterface
         return $items;
     }
 
+    /**
+     * Returns both roles and permissions assigned to user.
+     *
+     * @param  integer $userId
+     * @return array
+     */
+    public function getItemsByUser($userId)
+    {
+        if (empty($userId)) {
+            return [];
+        }
+
+        $query = (new Query)->select('b.*')
+            ->from(['a' => $this->assignmentTable, 'b' => $this->itemTable])
+            ->where('{{a}}.[[item_name]]={{b}}.[[name]]')
+            ->andWhere(['a.user_id' => (string) $userId]);
+
+        $roles = [];
+        foreach ($query->all($this->db) as $row) {
+            $roles[$row['name']] = $this->populateItem($row);
+        }
+        return $roles;
+    }
+
     /** @inheritdoc */
     public function getItem($name)
     {

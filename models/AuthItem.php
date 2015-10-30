@@ -32,7 +32,7 @@ abstract class AuthItem extends Model
     /** @var string[] */
     public $children = [];
 
-    /** @var \yii\rbac\Item */
+    /** @var \yii\rbac\Role|\yii\rbac\Permission */
     public $item;
 
     /** @var \dektrium\rbac\components\DbManager */
@@ -51,6 +51,17 @@ abstract class AuthItem extends Model
                 $this->rule = get_class($this->manager->getRule($this->item->ruleName));
             }
         }
+    }
+
+    /** @inheritdoc */
+    public function attributeLabels()
+    {
+        return [
+            'name' => \Yii::t('rbac', 'Name'),
+            'description' => \Yii::t('rbac', 'Description'),
+            'children' => \Yii::t('rbac', 'Children'),
+            'rule' => \Yii::t('rbac', 'Rule'),
+        ];
     }
 
     /** @inheritdoc */
@@ -117,7 +128,7 @@ abstract class AuthItem extends Model
 
         if (!empty($this->rule)) {
             $rule = \Yii::createObject($this->rule);
-            if (null === ($rule = $this->manager->getRule($rule->name))) {
+            if (null === $this->manager->getRule($rule->name)) {
                 $this->manager->add($rule);
             }
             $this->item->ruleName = $rule->name;
@@ -133,16 +144,31 @@ abstract class AuthItem extends Model
             $this->manager->update($oldName, $this->item);
         }
 
-        if (is_array($this->children)) {
-            foreach ($this->children as $name) {
-                $child = $this->manager->getItem($name);
-                if ($this->manager->hasChild($this->item, $child) == false) {
-                    $this->manager->addChild($this->item, $child);
-                }
-            }
-        }
+        $this->updateChildren();
 
         return true;
+    }
+
+    /**
+     * Updated items children.
+     */
+    protected function updateChildren()
+    {
+        $children = $this->manager->getChildren($this->item->name);
+        $childrenNames = array_keys($children);
+
+        if (is_array($this->children)) {
+            // remove children that
+            foreach (array_diff($childrenNames, $this->children) as $item) {
+                $this->manager->removeChild($this->item, $children[$item]);
+            }
+            // add new children
+            foreach (array_diff($this->children, $childrenNames) as $item) {
+                $this->manager->addChild($this->item, $this->manager->getItem($item));
+            }
+        } else {
+            $this->manager->removeChildren($this->item);
+        }
     }
 
     /**

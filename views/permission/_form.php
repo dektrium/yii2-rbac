@@ -14,6 +14,7 @@
  * @var $model dektrium\rbac\models\Role
  */
 
+use kartik\select2\Select2;
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 
@@ -24,13 +25,19 @@ use yii\helpers\Html;
     'enableAjaxValidation'   => true,
 ]) ?>
 
-<?= $form->field($model, 'name')->hint(Yii::t('rbac', 'The name of the item.')) ?>
+<?= $form->field($model, 'name') ?>
 
-<?= $form->field($model, 'description')->hint(Yii::t('rbac', 'The item description (Optional).')) ?>
+<?= $form->field($model, 'description') ?>
 
-<?= $form->field($model, 'rule')->hint(Yii::t('rbac', 'Classname of the rule associated with this item')) ?>
+<?= $form->field($model, 'rule') ?>
 
-<?= $form->field($model, 'children')->listBox($model->getUnassignedItems(), ['id' => 'children', 'multiple' => true]) ?>
+<?= $form->field($model, 'children')->widget(Select2::className(), [
+    'data' => $model->getUnassignedItems(),
+    'options' => [
+        'id' => 'children',
+        'multiple' => true
+    ],
+]) ?>
 
 <?= Html::submitButton(Yii::t('rbac', 'Save'), ['class' => 'btn btn-success btn-block']) ?>
 
