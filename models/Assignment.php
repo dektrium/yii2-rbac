@@ -23,16 +23,16 @@ use yii\helpers\ArrayHelper;
  */
 class Assignment extends Model
 {
-	/** @var array */
+    /** @var array */
     public $items = [];
-	
-	/** @var integer */
+
+    /** @var integer */
     public $user_id;
-    
+
     /** @var boolean */
     public $updated = false;
-	
-	/** @var DbManager */
+
+    /** @var DbManager */
     protected $manager;
 
     /** @inheritdoc */
@@ -43,7 +43,7 @@ class Assignment extends Model
         if ($this->user_id === null) {
             throw new InvalidConfigException('user_id must be set');
         }
-        
+
         $this->items = array_keys($this->manager->getItemsByUser($this->user_id));
     }
 
@@ -64,7 +64,7 @@ class Assignment extends Model
             ['user_id', 'integer']
         ];
     }
-	
+
     /**
      * Updates auth assignments for user.
      * @return boolean
