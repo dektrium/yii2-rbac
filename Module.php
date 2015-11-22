@@ -40,7 +40,12 @@ class Module extends BaseModule
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function () {
-                            return in_array(Yii::$app->user->identity->username, $this->admins);
+                            $user = Yii::$app->user->identity;
+                            if (method_exists($user, 'getIsAdmin')) {
+                                return $user->getIsAdmin();
+                            } else {
+                                return in_array($user->username, $this->admins);
+                            }
                         },
                     ]
                 ],
