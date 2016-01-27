@@ -28,6 +28,9 @@ class Module extends BaseModule
     
     /** @var array */
     public $admins = [];
+	
+	/** @var string The Administrator permission name. */
+    public $adminPermission;
     
     /** @inheritdoc */
     public function behaviors()
@@ -44,7 +47,7 @@ class Module extends BaseModule
                             if (method_exists($user, 'getIsAdmin')) {
                                 return $user->getIsAdmin();
                             } else {
-                                return in_array($user->username, $this->admins);
+                                return (\Yii::$app->getAuthManager() && $this->adminPermission  ? \Yii::$app->user->can($this->adminPermission) : false) || in_array($this->username, $this->admins);
                             }
                         },
                     ]
