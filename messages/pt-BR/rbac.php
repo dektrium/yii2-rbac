@@ -19,8 +19,9 @@
 return [
     'Assignments have been updated' => 'As atribuições foram atualizadas',
     'Auth item with such name already exists' => 'O item Auth com este nome já existe',
+    'Children' => 'Descendentes',
     'Class "{0}" does not exist' => 'A classe "{0}" não existe',
-    'Classname of the rule associated with this item' => 'Nome da classe da regra associada com este item',
+    'Classname of the rule associated with this item' => 'Nome da classe da regra associada a este item',
     'Create' => 'Criar',
     'Create new permission' => 'Criar nova permissão',
     'Create new role' => 'Criar nova role',
@@ -34,6 +35,7 @@ return [
     'New user' => 'Novo usuário',
     'Permissions' => 'Permissões',
     'Roles' => 'Roles',
+    'Rule' => 'Regra',
     'Rule class can not be instantiated' => 'A classe de regra não pode ser instanciada',
     'Rule class must extend "yii\rbac\Rule"' => 'A classe de regra deve estender "yii\rbac\Rule"',
     'Rule name' => 'Nome da regra',
