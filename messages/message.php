@@ -4,6 +4,7 @@ return [
     'sourcePath' => __DIR__ . '/../',
     'messagePath' => __DIR__,
     'languages' => [
+        'de',
         'fa-IR',
         'fi',
         'fr',
