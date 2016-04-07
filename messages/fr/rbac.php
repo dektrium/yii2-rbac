@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Message translations.
  *
@@ -18,18 +18,18 @@
  */
 return [
     'Assignments have been updated' => 'Les affectations ont été mises à jour',
-    'Auth item with such name already exists' => 'L\'objet de Auth avec un nom identique existe déjà',
-    'Children' => 'Enfants',
+    'Auth item with such name already exists' => 'Un rôle/Une permission avec un nom identique existe déjà',
+    'Children' => 'Rôles/Permissions rattachées',
     'Class "{0}" does not exist' => 'La classe "{0}" n\'existe pas',
     'Classname of the rule associated with this item' => 'Le nom de la classe de la règle associée à cet objet',
     'Create' => 'Créer',
-    'Create new permission' => 'Créer nouvelle permission',
-    'Create new role' => 'Créer nouveau rôle',
+    'Create new permission' => 'Créer une nouvelle permission',
+    'Create new role' => 'Créer un nouveau rôle',
     'Description' => 'Description',
     'Invalid value' => 'Valeur invalide',
-    'Item has been created' => 'Objet a été crée',
-    'Item has been updated' => 'Objet a été mis à jour',
-    'Items' => 'Objets',
+    'Item has been created' => 'Le rôle/La permission a été créé',
+    'Item has been updated' => 'Le rôle/La permission a été mis à jour',
+    'Items' => 'Rôles/Permissions',
     'Name' => 'Nom',
     'New permission' => 'Nouvelle permission',
     'New role' => 'Nouveau rôle',
@@ -41,11 +41,11 @@ return [
     'Rule class must extend "yii\rbac\Rule"' => 'La classe de règle doit étendre "yii\rbac\Rule"',
     'Rule name' => 'Nom de la règle',
     'Save' => 'Sauvegarder',
-    'The item description (Optional).' => 'La description de l\'objet (Facultatif)',
-    'The name of the item.' => 'Le nom de l\'objet.',
-    'There is neither role nor permission with name "{0}"' => 'Il n\'y a ni rôle, ni l\'autorisation avec le nom "{0}"',
-    'Update assignments' => 'Modifier affectations',
-    'Update permission' => 'Modifier permission',
-    'Update role' => 'Modifier rôle',
-    'Users' => 'Utlisateurs',
+    'The item description (Optional).' => 'La description du rôle/de la permission (Facultatif)',
+    'The name of the item.' => 'Le nom du rôle/de la permission.',
+    'There is neither role nor permission with name "{0}"' => 'Il n\'y a ni rôle, ni permission avec le nom "{0}"',
+    'Update assignments' => 'Modifier les affectations',
+    'Update permission' => 'Modifier la permission',
+    'Update role' => 'Modifier le rôle',
+    'Users' => 'Utilisateurs',
 ];
