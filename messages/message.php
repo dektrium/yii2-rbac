@@ -12,6 +12,7 @@ return [
         'nl',
         'pt-BR',
         'ru',
+        'uk',
     ],
     'translator' => 'Yii::t',
     'sort' => false,
