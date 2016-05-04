@@ -43,6 +43,19 @@ Add rbac module to both web and console config files as follows:
 ...
 ```
 
+Furthermore, you'll need to configure Yii2's `authManager` component accordingly, e.g.:
+
+```php
+'components' => [
+    ...
+    'authManager' => [
+        'class' => 'yii\rbac\DbManager',
+    ],
+    ...
+],
+...
+```
+
 Step 3: Updating database schema
 --------------------------------
 
