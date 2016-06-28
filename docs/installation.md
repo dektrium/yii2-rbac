@@ -49,7 +49,7 @@ Furthermore, you'll need to configure Yii2's `authManager` component accordingly
 'components' => [
     ...
     'authManager' => [
-        'class' => 'yii\rbac\DbManager',
+        'class' => 'dektrium\rbac\components\DbManager',
     ],
     ...
 ],
