@@ -18,7 +18,9 @@ use yii\helpers\ArrayHelper;
  */
 class Role extends AuthItem
 {
-    /** @inheritdoc */
+    /**
+     * @inheritdoc 
+     */
     public function getUnassignedItems()
     {
         return ArrayHelper::map($this->manager->getItems(null, $this->item !== null ? [$this->item->name] : []), 'name', function ($item) {
@@ -26,7 +28,9 @@ class Role extends AuthItem
         });
     }
 
-    /** @inheritdoc */
+    /**
+     * @inheritdoc 
+     */
     protected function createItem($name)
     {
         return $this->manager->createRole($name);

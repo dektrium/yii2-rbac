@@ -23,19 +23,29 @@ use yii\helpers\ArrayHelper;
  */
 class Assignment extends Model
 {
-    /** @var array */
+    /**
+     * @var array
+     */
     public $items = [];
 
-    /** @var integer */
+    /**
+     * @var integer
+     */
     public $user_id;
 
-    /** @var boolean */
+    /**
+     * @var boolean
+     */
     public $updated = false;
 
-    /** @var DbManager */
+    /**
+     * @var DbManager
+     */
     protected $manager;
 
-    /** @inheritdoc */
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
         parent::init();
@@ -47,7 +57,9 @@ class Assignment extends Model
         $this->items = array_keys($this->manager->getItemsByUser($this->user_id));
     }
 
-    /** @inheritdoc */
+    /**
+     * @inheritdoc
+     */
     public function attributeLabels()
     {
         return [
@@ -55,7 +67,9 @@ class Assignment extends Model
         ];
     }
 
-    /** @inheritdoc */
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [

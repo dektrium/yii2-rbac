@@ -18,7 +18,9 @@ use yii\rbac\Item;
  */
 class Permission extends AuthItem
 {
-    /** @inheritdoc */
+    /**
+     * @inheritdoc
+     */
     public function getUnassignedItems()
     {
         return ArrayHelper::map($this->manager->getItems(Item::TYPE_PERMISSION, $this->item !== null ? [$this->item->name] : []), 'name', function ($item) {
@@ -26,7 +28,9 @@ class Permission extends AuthItem
         });
     }
 
-    /** @inheritdoc */
+    /** 
+     * @inheritdoc
+     */
     protected function createItem($name)
     {
         return $this->manager->createPermission($name);

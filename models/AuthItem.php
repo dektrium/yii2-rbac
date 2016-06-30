@@ -20,25 +20,39 @@ use dektrium\rbac\validators\RbacValidator;
  */
 abstract class AuthItem extends Model
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     public $name;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     public $description;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     public $rule;
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     public $children = [];
 
-    /** @var \yii\rbac\Role|\yii\rbac\Permission */
+    /**
+     * @var \yii\rbac\Role|\yii\rbac\Permission
+     */
     public $item;
 
-    /** @var \dektrium\rbac\components\DbManager */
+    /**
+     * @var \dektrium\rbac\components\DbManager
+     */
     protected $manager;
 
-    /** @inheritdoc */
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
         parent::init();
@@ -53,7 +67,9 @@ abstract class AuthItem extends Model
         }
     }
 
-    /** @inheritdoc */
+    /**
+     * @inheritdoc
+     */
     public function attributeLabels()
     {
         return [
@@ -64,7 +80,9 @@ abstract class AuthItem extends Model
         ];
     }
 
-    /** @inheritdoc */
+    /**
+     * @inheritdoc
+     */
     public function scenarios()
     {
         return [
@@ -73,7 +91,9 @@ abstract class AuthItem extends Model
         ];
     }
 
-    /** @inheritdoc */
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [

@@ -16,26 +16,40 @@ use yii\data\ArrayDataProvider;
 use yii\db\Query;
 
 /**
+ * Search model for auth items (roles and permissions).
+ * 
  * @author Dmitry Erofeev <dmeroff@gmail.com>
  */
 class Search extends Model
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     public $name;
     
-    /** @var string */
+    /**
+     * @var string
+     */
     public $description;
     
-    /** @var string */
+    /**
+     * @var string
+     */
     public $rule_name;
     
-    /** @var \dektrium\rbac\components\DbManager */
+    /**
+     * @var \dektrium\rbac\components\DbManager
+     */
     protected $manager;
     
-    /** @var int */
+    /**
+     * @var int
+     */
     protected $type;
 
-    /** @inheritdoc */
+    /**
+     * @inheritdoc
+     */
     public function __construct($type, $config = [])
     {
         parent::__construct($config);
@@ -43,7 +57,9 @@ class Search extends Model
         $this->type    = $type;
     }
     
-    /** @inheritdoc */
+    /**
+     * @inheritdoc
+     */
     public function scenarios()
     {
         return [
@@ -52,8 +68,8 @@ class Search extends Model
     }
     
     /**
-     * @param  array              $params
-     * @return ActiveDataProvider
+     * @param  array $params
+     * @return ArrayDataProvider
      */
     public function search($params = [])
     {
