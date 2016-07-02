@@ -11,7 +11,7 @@
 
 namespace dektrium\rbac\models;
 
-use yii\helpers\ArrayHelper;
+use yii\rbac\Item;
 
 /**
  * @author Dmitry Erofeev <dmeroff@gmail.com>
@@ -23,9 +23,33 @@ class Role extends AuthItem
      */
     public function getUnassignedItems()
     {
-        return ArrayHelper::map($this->manager->getItems(null, $this->item !== null ? [$this->item->name] : []), 'name', function ($item) {
-            return empty($item->description) ? $item->name : $item->name . ' (' . $item->description . ')';
-        });
+        $data  = [];
+        $items = $this->manager->getItems(null, $this->item !== null ? [$this->item->name] : []);
+
+        if ($this->item === null) {
+            foreach ($items as $item) {
+                $data[$item->name] = $this->formatName($item);
+            }
+        } else {
+            foreach ($items as $item) {
+                if ($this->manager->canAddChild($this->item, $item)) {
+                    $data[$item->name] = $this->formatName($item);
+                }
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * Formats name.
+     *
+     * @param  Item $item
+     * @return string
+     */
+    protected function formatName(Item $item)
+    {
+        return empty($item->description) ? $item->name : $item->name . ' (' . $item->description . ')';
     }
 
     /**

@@ -2,6 +2,8 @@
 
 ## 1.0.0 Under development
 
+- Bug #21: Added loop check while creating unassigned items list (dmeroff)
+- Chg: Bumped required Yii2 version to 2.0.8 (dmeroff)
 - New #71: Added ability to set auth item data when creating/updating roles/permissions (dmeroff)
 - Chg: Removed `enableFlashMessages` option (see UPGRADE.md for details) (dmeroff)
 
