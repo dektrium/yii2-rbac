@@ -11,6 +11,7 @@
 
 namespace dektrium\rbac\models;
 
+use yii\base\InvalidConfigException;
 use yii\base\InvalidParamException;
 use yii\base\Model;
 use yii\helpers\Json;
@@ -132,18 +133,24 @@ abstract class AuthItem extends Model
             }],
             ['children', RbacValidator::className()],
             ['rule', function () {
-                try {
-                    $class = new \ReflectionClass($this->rule);
-                } catch (\Exception $ex) {
+                if (!class_exists($this->rule)) {
                     $this->addError('rule', \Yii::t('rbac', 'Class "{0}" does not exist', $this->rule));
-                    return;
-                }
+                } else {
+                    try {
+                        $class = '\yii\rbac\Rule';
+                        $rule  = \Yii::createObject($this->rule);
 
-                if ($class->isInstantiable() == false) {
-                    $this->addError('rule', \Yii::t('rbac', 'Rule class can not be instantiated'));
-                }
-                if ($class->isSubclassOf('\yii\rbac\Rule') == false) {
-                    $this->addError('rule', \Yii::t('rbac', 'Rule class must extend "yii\rbac\Rule"'));
+                        if (!($rule instanceof $class)) {
+                            $this->addError('rule', \Yii::t('rbac', 'Rule class must extend "yii\rbac\Rule"'));
+                        }
+
+                        if ($rule->name === null) {
+                            $this->addError('rule', \Yii::t('rbac', 'Rule must have "name" property set'));
+                        }
+                    } catch (InvalidConfigException $e) {
+                        $this->addError('rule', \Yii::t('rbac', 'Rule class can not be instantiated'));
+
+                    }
                 }
             }],
             ['data', function () {
