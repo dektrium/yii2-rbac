@@ -1,18 +1,19 @@
 # CHANGELOG
 
-## v1.0.0 [WIP]
+## 1.0.0 Under development
 
-- Removed `enableFlashMessages` option (see UPGRADE.md for details)
+- New #71: Added ability to set auth item data when creating/updating roles/permissions (dmeroff)
+- Chg: Removed `enableFlashMessages` option (see UPGRADE.md for details) (dmeroff)
 
-## v0.3.0 [30 March 2016]
+## 0.3.0 March 30, 2016
 
-- Added admin access via rbac permission #54 (Talwoasc)
-- Updated translations
+- New #54: Added admin access via rbac permission (Talwoasc)
+- Enh: Updated translations
 
-## v0.2.0 [05 December 2015]
+## 0.2.0 December 5, 2015
 
 - Some fixes and improvements
 
-## v0.1.0 [14 June 2015]
+## 0.1.0 June 14, 2015
 
 - Initial release

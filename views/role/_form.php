@@ -26,9 +26,19 @@ use yii\helpers\Html;
 
 <?= $form->field($model, 'name') ?>
 
-<?= $form->field($model, 'description') ?>
+<?= $form->field($model, 'description')->textarea() ?>
 
 <?= $form->field($model, 'rule') ?>
+
+<?php if ($model->dataCannotBeDecoded): ?>
+    <div class="alert alert-info">
+        <?= Yii::t('rbac', 'Data cannot be decoded') ?>
+    </div>
+<?php else: ?>
+    <?= $form->field($model, 'data')->textarea([
+        'rows' => 3
+    ]) ?>
+<?php endif ?>
 
 <?= $form->field($model, 'children')->widget(Select2::className(), [
     'data' => $model->getUnassignedItems(),
