@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.0.0 [WIP]
+
+- Removed `enableFlashMessages` option (see UPGRADE.md for details)
+
 ## v0.3.0 [30 March 2016]
 
 - Added admin access via rbac permission #54 (Talwoasc)
