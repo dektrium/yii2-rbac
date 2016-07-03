@@ -14,6 +14,7 @@ namespace dektrium\rbac\models;
 use yii\base\Model;
 use yii\data\ArrayDataProvider;
 use yii\db\Query;
+use yii\helpers\ArrayHelper;
 
 /**
  * Search model for auth items (roles and permissions).
@@ -88,5 +89,36 @@ class Search extends Model
         $dataProvider->allModels = $query->all($this->manager->db);
         
         return $dataProvider;
+    }
+
+    /**
+     * Returns list of item names.
+     *
+     * @return array
+     */
+    public function getNameList()
+    {
+        $rows = (new Query)
+            ->select(['name'])
+            ->andWhere(['type' => $this->type])
+            ->from($this->manager->itemTable)
+            ->all();
+
+        return ArrayHelper::map($rows, 'name', 'name');
+    }
+
+    /**
+     * Returns list of rule names.
+     * 
+     * @return array
+     */
+    public function getRuleList()
+    {
+        $rows = (new Query())
+            ->select(['name'])
+            ->from($this->manager->ruleTable)
+            ->all();
+
+        return ArrayHelper::map($rows, 'name', 'name');
     }
 }

@@ -2,6 +2,7 @@
 
 ## 1.0.0 Under development
 
+- Enh: Updated grid views (dmeroff)
 - Enh: Added check if rule has name property set (dmeroff)
 - Bug #21: Added loop check while creating unassigned items list (dmeroff)
 - Chg: Bumped required Yii2 version to 2.0.8 (dmeroff)

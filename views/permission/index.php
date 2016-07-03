@@ -15,9 +15,11 @@
  * @var $filterModel  dektrium\rbac\models\Search
  */
 
+use kartik\select2\Select2;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\helpers\Url;
+use yii\widgets\Pjax;
 
 $this->title = Yii::t('rbac', 'Permissions');
 $this->params['breadcrumbs'][] = $this->title;
@@ -25,6 +27,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <?php $this->beginContent('@dektrium/rbac/views/layout.php') ?>
+
+<?php Pjax::begin() ?>
 
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
@@ -37,12 +41,28 @@ $this->params['breadcrumbs'][] = $this->title;
             'options'   => [
                 'style' => 'width: 20%'
             ],
+            'filter' => Select2::widget([
+                'model'     => $filterModel,
+                'attribute' => 'name',
+                'data'      => $filterModel->getNameList(),
+                'options'   => [
+                    'placeholder' => Yii::t('rbac', 'Select permission'),
+                ],
+                'pluginOptions' => [
+                    'allowClear' => true,
+                ],
+            ]),
         ],
         [
             'attribute' => 'description',
             'header'    => Yii::t('rbac', 'Description'),
             'options'   => [
-                'style' => 'width: 55%'
+                'style' => 'width: 55%',
+            ],
+            'filterInputOptions' => [
+                'class'       => 'form-control',
+                'id'          => null,
+                'placeholder' => Yii::t('rbac', 'Enter the description')
             ],
         ],
         [
@@ -51,6 +71,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'options'   => [
                 'style' => 'width: 20%'
             ],
+            'filter' => Select2::widget([
+                'model'     => $filterModel,
+                'attribute' => 'rule_name',
+                'data'      => $filterModel->getRuleList(),
+                'options'   => [
+                    'placeholder' => Yii::t('rbac', 'Select rule'),
+                ],
+                'pluginOptions' => [
+                    'allowClear' => true,
+                ],
+            ]),
         ],
         [
             'class'      => ActionColumn::className(),
@@ -64,5 +95,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]
     ],
 ]) ?>
+
+<?php Pjax::end() ?>
 
 <?php $this->endContent() ?>
