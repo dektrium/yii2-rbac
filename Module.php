@@ -20,11 +20,6 @@ use yii\filters\AccessControl;
 class Module extends BaseModule
 {
     /**
-     * @var bool Whether to show flash messages
-     */
-    public $enableFlashMessages = true;
-
-    /**
      * @var string
      */
     public $defaultRoute = 'role/index';

@@ -18,10 +18,6 @@ use dektrium\rbac\widgets\Menu;
 
 ?>
 
-<?= $this->render('/_alert', [
-    'module' => Yii::$app->getModule('rbac'),
-]) ?>
-
 <?= Menu::widget() ?>
 
 <div style="padding: 10px 0">
