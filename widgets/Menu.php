@@ -9,7 +9,6 @@
  * file that was distributed with this source code.
  */
 
-
 namespace dektrium\rbac\widgets;
 
 use yii\bootstrap\Nav;
@@ -53,6 +52,10 @@ class Menu extends Nav
                 'url'   => ['/rbac/permission/index'],
             ],
             [
+                'label' => \Yii::t('rbac', 'Rules'),
+                'url'   => ['/rbac/rule/index'],
+            ],
+            [
                 'label' => \Yii::t('rbac', 'Create'),
                 'items' => [
                     [
@@ -67,6 +70,10 @@ class Menu extends Nav
                     [
                         'label' => \Yii::t('rbac', 'New permission'),
                         'url'   => ['/rbac/permission/create']
+                    ],
+                    [
+                        'label' => \Yii::t('rbac', 'New rule'),
+                        'url'   => ['/rbac/rule/create']
                     ]
                 ]
             ],
