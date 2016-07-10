@@ -11,9 +11,13 @@
 
 namespace dektrium\rbac\controllers;
 
+use dektrium\rbac\components\DbManager;
 use dektrium\rbac\models\Rule;
 use dektrium\rbac\models\RuleSearch;
+use yii\di\Instance;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
 
@@ -24,6 +28,36 @@ use yii\widgets\ActiveForm;
  */
 class RuleController extends Controller
 {
+    /**
+     * @var string|DbManager The auth manager component ID.
+     */
+    public $authManager = 'authManager';
+
+    /**
+     * This method will set [[authManager]] to be the 'authManager' application component, if it is `null`.
+     */
+    public function init()
+    {
+        parent::init();
+
+        $this->authManager = Instance::ensure($this->authManager, DbManager::className());
+    }
+
+    /**
+     * @return array
+     */
+    public function behaviors()
+    {
+        return [
+            'verbFilter' => [
+                'class'   => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
+
     /**
      * Shows list of created rules.
      * 
@@ -66,6 +100,25 @@ class RuleController extends Controller
     }
 
     /**
+     * Removes rule.
+     *
+     * @param  string $name
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function actionDelete($name)
+    {
+        $rule = $this->findRule($name);
+
+        $this->authManager->remove($rule);
+        $this->authManager->invalidateCache();
+
+        \Yii::$app->session->setFlash('success', \Yii::t('rbac', 'Rule has been removed'));
+
+        return $this->redirect(['index']);
+    }
+
+    /**
      * Searches for rules.
      *
      * @param  string|null $q
@@ -98,5 +151,21 @@ class RuleController extends Controller
     private function getSearchModel()
     {
         return \Yii::createObject(RuleSearch::className());
+    }
+
+    /**
+     * @param  string $name
+     * @return mixed|null|\yii\rbac\Rule
+     * @throws NotFoundHttpException
+     */
+    private function findRule($name)
+    {
+        $rule = $this->authManager->getRule($name);
+
+        if ($rule instanceof \yii\rbac\Rule) {
+            return $rule;
+        }
+
+        throw new NotFoundHttpException(\Yii::t('rbac', 'Not found'));
     }
 }
