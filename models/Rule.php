@@ -42,6 +42,19 @@ class Rule extends Model
     public $authManager = 'authManager';
 
     /**
+     * @var string
+     */
+    private $_oldName;
+
+    /**
+     * @param string $oldName
+     */
+    public function setOldName($oldName)
+    {
+        $this->_oldName = $oldName;
+    }
+
+    /**
      * This method will set [[authManager]] to be the 'authManager' application component, if it is `null`.
      */
     public function init()
@@ -72,6 +85,9 @@ class Rule extends Model
             [['name', 'class'], 'required'],
             ['name', 'match', 'pattern' => '/^[\w][\w-.:]+[\w]$/'],
             ['name', function () {
+                if ($this->name == $this->_oldName) {
+                    return;
+                }
                 $rule = $this->authManager->getRule($this->name);
 
                 if ($rule instanceof \yii\rbac\Rule) {
@@ -119,6 +135,32 @@ class Rule extends Model
         ]);
         
         $this->authManager->add($rule);
+        
+        return true;
+    }
+
+    /**
+     * Updates existing auth rule.
+     * 
+     * @return bool
+     * @throws InvalidConfigException
+     */
+    public function update()
+    {
+        if ($this->scenario != self::SCENARIO_UPDATE) {
+            return false;
+        }
+
+        if (!$this->validate()) {
+            return false;
+        }
+
+        $rule = \Yii::createObject([
+            'class' => $this->class,
+            'name'  => $this->name,
+        ]);
+        
+        $this->authManager->update($this->_oldName, $rule);
         
         return true;
     }

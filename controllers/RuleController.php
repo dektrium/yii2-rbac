@@ -100,6 +100,38 @@ class RuleController extends Controller
     }
 
     /**
+     * Updates existing auth rule.
+     * @param  string $name
+     * @return array|string|Response
+     * @throws NotFoundHttpException
+     */
+    public function actionUpdate($name)
+    {
+        $model = $this->getModel(Rule::SCENARIO_UPDATE);
+        $rule  = $this->findRule($name);
+
+        $model->setOldName($name);
+        $model->setAttributes([
+            'name'  => $rule->name,
+            'class' => get_class($rule),
+        ]);
+
+        if (\Yii::$app->request->isAjax && $model->load(\Yii::$app->request->post())) {
+            \Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+        }
+
+        if ($model->load(\Yii::$app->request->post()) && $model->update()) {
+            \Yii::$app->session->setFlash('success', \Yii::t('rbac', 'Rule has been updated'));
+            return $this->redirect(['index']);
+        }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
      * Removes rule.
      *
      * @param  string $name
