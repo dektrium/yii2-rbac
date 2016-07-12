@@ -15,6 +15,8 @@
  */
 
 use kartik\select2\Select2;
+use yii\helpers\Url;
+use yii\web\JsExpression;
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 
@@ -29,7 +31,18 @@ use yii\helpers\Html;
 
 <?= $form->field($model, 'description')->textarea() ?>
 
-<?= $form->field($model, 'rule') ?>
+<?= $form->field($model, 'rule')->widget(Select2::className(), [
+    'options'   => [
+        'placeholder' => Yii::t('rbac', 'Select rule'),
+    ],
+    'pluginOptions' => [
+        'ajax' => [
+            'url'  => Url::to(['/rbac/rule/search']),
+            'data' => new JsExpression('function(params) { return {q:params.term}; }')
+        ],
+        'allowClear' => true,
+    ],
+]) ?>
 
 <?php if ($model->dataCannotBeDecoded): ?>
     <div class="alert alert-info">

@@ -2,6 +2,7 @@
 
 ## 1.0.0 Under development
 
+- Enh #9: Added ability to manage rules (dmeroff)
 - Enh: Updated grid views (dmeroff)
 - Enh: Added check if rule has name property set (dmeroff)
 - Bug #21: Added loop check while creating unassigned items list (dmeroff)
