@@ -17,7 +17,7 @@ use yii\filters\AccessControl;
 /**
  * @author Dmitry Erofeev <dmeroff@gmail.com>
  */
-class Module extends BaseModule
+class RbacWebModule extends BaseModule
 {
     /**
      * @var string

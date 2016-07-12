@@ -56,7 +56,7 @@ class Bootstrap implements BootstrapInterface
      */
     protected function checkRbacModuleInstalled(Application $app)
     {
-        return $app->hasModule('rbac') && $app->getModule('rbac') instanceof Module;
+        return $app->hasModule('rbac') && $app->getModule('rbac') instanceof RbacWebModule;
     }
     
     /**
