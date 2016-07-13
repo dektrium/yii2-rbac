@@ -15,7 +15,10 @@ use dektrium\rbac\components\DbManager;
 use dektrium\rbac\components\ManagerInterface;
 use dektrium\user\Module as UserModule;
 use yii\base\Application;
+use yii\web\Application as WebApplication;
+use yii\console\Application as ConsoleApplication;
 use yii\base\BootstrapInterface;
+use yii\base\InvalidConfigException;
 
 /**
  * Bootstrap class registers translations and needed application components.
@@ -33,13 +36,16 @@ class Bootstrap implements BootstrapInterface
                 'basePath' => __DIR__ . '/messages',
             ];
         }
-            
+
         if ($this->checkRbacModuleInstalled($app)) {
-            // register auth manager
-            if (!$this->checkAuthManagerConfigured($app)) {
+            $authManager = $app->get('authManager', false);
+
+            if (!$authManager) {
                 $app->set('authManager', [
                     'class' => DbManager::className(),
                 ]);
+            } else if (!($authManager instanceof ManagerInterface)) {
+                throw new InvalidConfigException('You have wrong authManager configuration');
             }
 
             // if dektrium/user extension is installed, copy admin list from there
@@ -56,7 +62,11 @@ class Bootstrap implements BootstrapInterface
      */
     protected function checkRbacModuleInstalled(Application $app)
     {
-        return $app->hasModule('rbac') && $app->getModule('rbac') instanceof RbacWebModule;
+        if ($app instanceof WebApplication) {
+            return $app->hasModule('rbac') && $app->getModule('rbac') instanceof RbacWebModule;
+        } else {
+            return $app->hasModule('rbac') && $app->getModule('rbac') instanceof RbacConsoleModule;
+        }
     }
     
     /**

@@ -2,6 +2,7 @@
 
 ## 1.0.0 Under development
 
+- New #77: Added migrate console command (dmeroff)
 - New: Module's class has been renamed from `dektrium\rbac\Module` to `dektrium\rbac\RbacWebModule` (dmeroff)
 - Enh #9: Added ability to manage rules (dmeroff)
 - Enh: Updated grid views (dmeroff)
