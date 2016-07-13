@@ -122,7 +122,6 @@ abstract class AuthItem extends Model
     {
         return [
             ['name', 'required'],
-            ['name', 'match', 'pattern' => '/^[\w][\w-.:]+[\w]$/'],
             [['name', 'description', 'rule'], 'trim'],
             ['name', function () {
                 if ($this->manager->getItem($this->name) !== null) {
