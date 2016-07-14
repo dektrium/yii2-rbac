@@ -199,7 +199,7 @@ class Migration extends Component implements MigrationInterface
      * Finds either role or permission or throws an exception if it is not found.
      *
      * @param  string $name
-     * @return Permission|Role
+     * @return Permission|Role|null
      */
     protected function findItem($name)
     {
@@ -215,14 +215,14 @@ class Migration extends Component implements MigrationInterface
             return $item;
         }
 
-        throw new \RuntimeException("Role or permission \"$name\" has not been found");
+        return null;
     }
 
     /**
      * Finds the role or throws an exception if it is not found.
      *
      * @param  string $name
-     * @return Role
+     * @return Role|null
      */
     protected function findRole($name)
     {
@@ -232,14 +232,14 @@ class Migration extends Component implements MigrationInterface
             return $role;
         }
 
-        throw new \RuntimeException("Role \"$name\" has not been found");
+        return null;
     }
 
     /**
      * Finds the permission or throws an exception if it is not found.
      *
      * @param  string $name
-     * @return Permission
+     * @return Permission|null
      */
     protected function findPermission($name)
     {
@@ -249,7 +249,7 @@ class Migration extends Component implements MigrationInterface
             return $permission;
         }
 
-        throw new \RuntimeException("Permission \"$name\" has not been found");
+        return null;
     }
 
     /**
