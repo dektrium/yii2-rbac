@@ -26,6 +26,9 @@
     }
   },
   "extra": {
-    "bootstrap": "dektrium\\rbac\\Bootstrap"
+    "bootstrap": "dektrium\\rbac\\Bootstrap",
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
   }
 }
