@@ -174,20 +174,26 @@ class Migration extends Component implements MigrationInterface
     /**
      * Creates new rule.
      *
-     * @param  string $ruleName  The name of the rule
-     * @param  string $className The class of the rule
+     * @param  string       $ruleName   The name of the rule
+     * @param  string|array $definition The class of the rule
      * @return Rule
      */
-    protected function createRule($ruleName, $className)
+    protected function createRule($ruleName, $definition)
     {
         echo "    > create rule $ruleName ...";
         $time = microtime(true);
 
+        if (is_array($definition)) {
+            $definition['name'] = $ruleName;
+        } else {
+            $definition = [
+                'class' => $definition,
+                'name' => $ruleName,
+            ];
+        }
+
         /** @var Rule $rule */
-        $rule = \Yii::createObject([
-            'class' => $className,
-            'name'  => $ruleName,
-        ]);
+        $rule = \Yii::createObject($definition);
 
         $this->authManager->add($rule);
         echo ' done (time: ' . sprintf('%.3f', microtime(true) - $time) . "s)\n";
