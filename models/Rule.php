@@ -135,6 +135,7 @@ class Rule extends Model
         ]);
         
         $this->authManager->add($rule);
+        $this->authManager->invalidateCache();
         
         return true;
     }
@@ -161,6 +162,7 @@ class Rule extends Model
         ]);
         
         $this->authManager->update($this->_oldName, $rule);
+        $this->authManager->invalidateCache();
         
         return true;
     }

@@ -180,6 +180,8 @@ abstract class AuthItem extends Model
 
         $this->updateChildren();
 
+        $this->manager->invalidateCache();
+
         return true;
     }
 
