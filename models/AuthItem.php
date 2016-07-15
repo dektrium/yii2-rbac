@@ -168,7 +168,7 @@ abstract class AuthItem extends Model
         $this->item->name        = $this->name;
         $this->item->description = $this->description;
         $this->item->data        = $this->data == null ? null : Json::decode($this->data);
-        $this->item->ruleName    = $this->rule;
+        $this->item->ruleName    = empty($this->rule) ? null : $this->rule;
   
         if ($isNewItem) {
             \Yii::$app->session->setFlash('success', \Yii::t('rbac', 'Item has been created'));
