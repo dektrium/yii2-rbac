@@ -1,66 +1,53 @@
-Installation
-============
+# Installation
 
 This document will guide you through the process of installing Yii2-rbac using **composer**. Installation is a quick and
-easy three-step process.
+easy four-step process.
 
 > **NOTE:** Before we start make sure that you have properly configured **db** application component.
 
+> **NOTE:** Please make sure that you don't have `authManager` component configured. It will be configured automatically
+ during installation.
 
-Step 1: Download using composer
--------------------------------
+## Step 1: Download using composer
 
-Add Yii2-rbac to the require section of your **composer.json** file:
-
-```js
-{
-    "require": {
-        "dektrium/yii2-rbac": "dev-master"
-    }
-}
-```
-
-And run following command to download extension using **composer**:
+Download extension using [composer](https://getcomposer.org):
 
 ```bash
-$ php composer.phar update
+$ composer install dektrium/yii2-rbac
 ```
 
-Step 2: Configure your application
-----------------------------------
+## Step 2: Configure your web application
 
-Add rbac module to both web and console config files as follows:
+Add rbac module to web application config file as follows:
 
 ```php
 ...
 'modules' => [
     ...
-    'rbac' => [
-        'class' => 'dektrium\rbac\Module',
-    ],
+    'rbac' => 'dektrium\rbac\RbacWebModule',
     ...
 ],
 ...
 ```
 
-Furthermore, you'll need to configure Yii2's `authManager` component accordingly, e.g.:
+## Step 3: Configure your console application
+
+Add rbac module to console application config file as follows:
 
 ```php
-'components' => [
+...
+'modules' => [
     ...
-    'authManager' => [
-        'class' => 'dektrium\rbac\components\DbManager',
-    ],
+    'rbac' => 'dektrium\rbac\RbacConsoleModule',
     ...
 ],
 ...
 ```
 
-Step 3: Updating database schema
---------------------------------
+## Step 4: Update your database schema
 
-After you downloaded and configured Yii2-rbac, the last thing you need to do is updating your database schema by applying
-the migration:
+After you downloaded and configured Yii2-rbac, the last thing you need to do is updating your database schema by 
+applying the migration:
 
 ```bash
 $ php yii migrate/up --migrationPath=@yii/rbac/migrations
