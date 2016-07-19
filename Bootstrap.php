@@ -49,7 +49,7 @@ class Bootstrap implements BootstrapInterface
             }
 
             // if dektrium/user extension is installed, copy admin list from there
-            if ($this->checkUserModuleInstalled($app)) {
+            if ($this->checkUserModuleInstalled($app) && $app instanceof WebApplication) {
                 $app->getModule('rbac')->admins = $app->getModule('user')->admins;
             }   
         }
