@@ -16,7 +16,6 @@ use dektrium\rbac\components\ManagerInterface;
 use dektrium\user\Module as UserModule;
 use yii\base\Application;
 use yii\web\Application as WebApplication;
-use yii\console\Application as ConsoleApplication;
 use yii\base\BootstrapInterface;
 use yii\base\InvalidConfigException;
 
@@ -26,6 +25,8 @@ use yii\base\InvalidConfigException;
  */
 class Bootstrap implements BootstrapInterface
 {
+    const VERSION = '1.0.0-alpha';
+
     /** @inheritdoc */
     public function bootstrap($app)
     {

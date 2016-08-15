@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 1.0.0 Under development
+## 1.0.0-alpha August 15, 2016
 
 - Enh: Invalidate cache after saving auth items/rules (dmeroff)
 - New #77: Added migrate console command (dmeroff)

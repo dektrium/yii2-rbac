@@ -13,7 +13,7 @@ easy four-step process.
 Download extension using [composer](https://getcomposer.org):
 
 ```bash
-$ composer install dektrium/yii2-rbac
+$ composer install dektrium/yii2-rbac:1.0.0-alpha@dev
 ```
 
 ## Step 2: Configure your web application
