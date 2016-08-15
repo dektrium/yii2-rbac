@@ -13,7 +13,7 @@ Yii2-rbac provides a way to manage your application's RBAC structure and include
 
 [Read the Documentation for master](docs/README.md)
 
-[Read the Documentation for v1.0.0-alpha](https://github.com/dektrium/yii2-user/blob/1.0.0-alpha/docs/README.md)
+[Read the Documentation for v1.0.0-alpha](https://github.com/dektrium/yii2-rbac/blob/1.0.0-alpha/docs/README.md)
 
 ## Support
 
