@@ -102,7 +102,7 @@ class Search extends Model
             ->select(['name'])
             ->andWhere(['type' => $this->type])
             ->from($this->manager->itemTable)
-            ->all();
+            ->all($this->manager->db);
 
         return ArrayHelper::map($rows, 'name', 'name');
     }
@@ -117,7 +117,7 @@ class Search extends Model
         $rows = (new Query())
             ->select(['name'])
             ->from($this->manager->ruleTable)
-            ->all();
+            ->all($this->manager->db);
 
         return ArrayHelper::map($rows, 'name', 'name');
     }
