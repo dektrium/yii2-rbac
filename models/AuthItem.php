@@ -169,12 +169,12 @@ abstract class AuthItem extends Model
         $this->item->description = $this->description;
         $this->item->data        = $this->data == null ? null : Json::decode($this->data);
         $this->item->ruleName    = empty($this->rule) ? null : $this->rule;
-  
+
         if ($isNewItem) {
-            \Yii::$app->session->setFlash('success', \Yii::t('rbac', 'Item has been created'));
+            if (\Yii::$app->has('session')) \Yii::$app->session->setFlash('success', \Yii::t('rbac', 'Item has been created'));
             $this->manager->add($this->item);
         } else {
-            \Yii::$app->session->setFlash('success', \Yii::t('rbac', 'Item has been updated'));
+            if (\Yii::$app->has('session')) \Yii::$app->session->setFlash('success', \Yii::t('rbac', 'Item has been updated'));
             $this->manager->update($oldName, $this->item);
         }
 
