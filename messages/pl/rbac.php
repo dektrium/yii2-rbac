@@ -17,17 +17,17 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Children' => 'Дочірні правила',
+    'Children' => 'Podpozycja',
     'Items' => ' Pozycja',
     'Rule' => 'Reguła',
     'Rule class must extend "yii\rbac\Rule"' => 'Klasa reguły musi dziedziczyć po "yii\rbac\Rule"',
     'Classname of the rule associated with this item' => 'Klasa reguły powiązana z pozycją',
     'The item description (Optional).' => 'Opis pozycji (Opcjonalnie).',
     'The name of the item.' => 'Nazwa pozycji.',
-    'Assignments have been updated' => 'Przypisanire zostało zaktualizowane',
+    'Assignments have been updated' => 'Przypisanie zostało zaktualizowane',
     'Auth item with such name already exists' => 'Pozycja o takiej samej nazwie już istnieje',
     'Class "{0}" does not exist' => 'Klasa "{0}" nie istnieje',
-    'Create' => 'Utwótrz',
+    'Create' => 'Utwórz',
     'Create new permission' => 'Utwótrz nowe uprawnienia',
     'Create new role' => 'Utwórz nową rolę',
     'Description' => 'Opis',
@@ -46,6 +46,6 @@ return [
     'There is neither role nor permission with name "{0}"' => 'Rola ani uprawnienie o nazwie "{0}" nie istnieją',
     'Update assignments' => 'Aktualizacja przypisania',
     'Update permission' => 'Aktualizacja uprawnień',
-    'Update role' => 'Aktualizuj role',
+    'Update role' => 'Aktualizacja ról',
     'Users' => 'Użytkownicy',
 ];
