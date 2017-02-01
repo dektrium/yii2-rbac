@@ -76,7 +76,7 @@ abstract class ItemControllerAbstract extends Controller
     {
         /** @var \dektrium\rbac\models\Role|\dektrium\rbac\models\Permission $model */
         $model = \Yii::createObject([
-            'class'    => $this->modelClass,
+            'class'    => $this->module->getModelClass($this->modelClass),
             'scenario' => 'create',
         ]);
 
@@ -103,11 +103,11 @@ abstract class ItemControllerAbstract extends Controller
         /** @var \dektrium\rbac\models\Role|\dektrium\rbac\models\Permission $model */
         $item  = $this->getItem($name);
         $model = \Yii::createObject([
-            'class'    => $this->modelClass,
+            'class'    => $this->module->getModelClass($this->modelClass),
             'scenario' => 'update',
             'item'     => $item,
         ]);
-
+        
         $this->performAjaxValidation($model);
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {

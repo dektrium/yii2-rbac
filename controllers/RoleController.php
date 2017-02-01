@@ -14,6 +14,7 @@ namespace dektrium\rbac\controllers;
 use yii\rbac\Role;
 use yii\web\NotFoundHttpException;
 use yii\rbac\Item;
+use dektrium\rbac\RbacWebModule as Module;
 
 /**
  * @author Dmitry Erofeev <dmeroff@gmail.com>
@@ -21,7 +22,7 @@ use yii\rbac\Item;
 class RoleController extends ItemControllerAbstract
 {
     /** @var string */
-    protected $modelClass = 'dektrium\rbac\models\Role';
+    protected $modelClass = Module::MODEL_ROLE;
     
     protected $type = Item::TYPE_ROLE;
 
