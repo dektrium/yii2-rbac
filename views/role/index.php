@@ -27,6 +27,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
+<?= $this->render('/_alert', ['module' => $this->context->module]) ?>
+
 <?php $this->beginContent('@dektrium/rbac/views/layout.php') ?>
 
 <?php Pjax::begin() ?>
