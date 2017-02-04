@@ -28,11 +28,14 @@ class RbacWebModule extends BaseModule
      * @var array
      */
     public $admins = [];
-	
-	/**
+    
+    /**
      * @var string The Administrator permission name.
      */
     public $adminPermission;
+    
+    /** @var bool Whether to show flash messages. */
+    public $enableFlashMessages = true;
     
     /** @inheritdoc */
     public function behaviors()
