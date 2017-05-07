@@ -15,11 +15,16 @@
  * of the guide for details.
  *
  * NOTE: this file must be saved in UTF-8 encoding.
+ *
+ * @author Pablo Palacios
+ * @email pp@moplin.com
+ *
  */
 return [
     'Children' => 'Hijos',
     'Items' => 'Ítems',
     'Rule' => 'Regla',
+    'Rules' => 'Reglas',
     'Rule class must extend "yii\rbac\Rule"' => 'La Clase de la regla debe extender "yii\rbac\Rule"',
     'Classname of the rule associated with this item' => 'Nombre de clase de la regla asociada con este ítem',
     'The item description (Optional).' => 'La descripción del Ítem (Opcional).',
@@ -37,9 +42,11 @@ return [
     'Name' => 'Nombre',
     'New permission' => 'Nuevo permiso',
     'New role' => 'Nuevo rol',
+    'New rule' => 'Nueva regla',
     'New user' => 'Nuevo usuario',
     'Permissions' => 'Permisos',
-    'Roles' => 'Reglas',
+    'Select permission' => 'Selecciona el permiso',
+    'Roles' => 'Roles',
     'Rule class can not be instantiated' => 'La clase de regla no se puede instanciar',
     'Rule name' => 'Nombre de la regla',
     'Save' => 'Guardar',
@@ -48,4 +55,10 @@ return [
     'Update permission' => 'Actualizar los permisos',
     'Update role' => 'Actualizar el rol',
     'Users' => 'Usuarios',
+    'Enter the description' => 'Escriba una descripción',
+    'Select role' => 'Seleccione un rol',
+    'Select rule' => 'Seleccione una regla',
+    'Class' => 'Clase',
+    'Created at' => 'Creado el',
+    'Updated at' => 'Abalizado el',
 ];
