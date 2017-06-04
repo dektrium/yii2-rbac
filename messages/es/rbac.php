@@ -60,5 +60,5 @@ return [
     'Select rule' => 'Seleccione una regla',
     'Class' => 'Clase',
     'Created at' => 'Creado el',
-    'Updated at' => 'Abalizado el',
+    'Updated at' => 'Actualizado el',
 ];
