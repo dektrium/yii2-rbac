@@ -103,7 +103,7 @@ class RbacWebModule extends BaseModule
         if (method_exists($user, 'getIsAdmin')) {
             return $user->getIsAdmin();
         } else if ($this->adminPermission) {
-            return $this->adminPermission ? \Yii::$app->user->can($this->adminPermission) : false;
+            return \Yii::$app->user->can($this->adminPermission);
         } else {
             return isset($user->username) ? in_array($user->username, $this->admins) : false;
         }
