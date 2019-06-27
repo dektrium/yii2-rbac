@@ -90,7 +90,7 @@ abstract class AuthItem extends Model
             }
         }
     }
-
+    
     /**
      * @inheritdoc
      */
@@ -181,8 +181,19 @@ abstract class AuthItem extends Model
         $this->updateChildren();
 
         $this->manager->invalidateCache();
+        
+        $this->afterSave($isNewItem);
 
         return true;
+    }
+    
+    /**
+     * Run after saving
+     * @param type $isNewItem
+     */
+    public function afterSave($isNewItem)
+    {
+        
     }
 
     /**

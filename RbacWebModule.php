@@ -19,6 +19,18 @@ use yii\filters\AccessControl;
  */
 class RbacWebModule extends BaseModule
 {
+    const EVENT_INIT = 'init';
+    const EVENT_MENU = 'menu';
+    const EVENT_PERMISSION_FORM = 'permissionForm';
+    
+    const MODEL_ASSIGNMENT = 100;
+    const MODEL_AUTHITEM = 101;
+    const MODEL_PERMISSION = 102;
+    const MODEL_ROLE = 103;
+    const MODEL_RULE = 104;
+    const MODEL_RULE_SEARCH = 105;
+    const MODEL_SEARCH = 106;
+    
     /**
      * @var string
      */
@@ -29,10 +41,18 @@ class RbacWebModule extends BaseModule
      */
     public $admins = [];
 	
-	/**
+    /**
      * @var string The Administrator permission name.
      */
     public $adminPermission;
+    
+     /**
+     * @var array the model settings for the module. The keys will be one of the `self::MODEL_` constants
+     * and the value will be the model class names you wish to set.
+     *
+     * @see `setConfig()` method for the default settings
+     */
+    public $modelSettings = [];
     
     /** @inheritdoc */
     public function behaviors()
@@ -50,6 +70,26 @@ class RbacWebModule extends BaseModule
             ],
         ];
     }
+    
+    public function init()
+    {
+        parent::init();
+        $this->setConfig();
+        $this->trigger(self::EVENT_INIT);
+    }
+    
+    public function setConfig()
+    {
+        $this->modelSettings = array_replace_recursive([
+            self::MODEL_ASSIGNMENT => 'dektrium\rbac\models\Assignment',
+            self::MODEL_AUTHITEM => 'dektrium\rbac\models\AuthItem',
+            self::MODEL_PERMISSION => 'dektrium\rbac\models\Permission',
+            self::MODEL_ROLE => 'dektrium\rbac\models\Role',
+            self::MODEL_RULE => 'dektrium\rbac\models\Rule',
+            self::MODEL_RULE_SEARCH => 'dektrium\rbac\models\RuleSearch',
+            self::MODEL_SEARCH => 'dektrium\rbac\models\Search',
+        ], $this->modelSettings);
+    }
 
     /**
      * Checks access.
@@ -63,9 +103,14 @@ class RbacWebModule extends BaseModule
         if (method_exists($user, 'getIsAdmin')) {
             return $user->getIsAdmin();
         } else if ($this->adminPermission) {
-            return \Yii::$app->user->can($this->adminPermission);
+            return $this->adminPermission ? \Yii::$app->user->can($this->adminPermission) : false;
         } else {
             return isset($user->username) ? in_array($user->username, $this->admins) : false;
         }
+    }
+    
+    public function getModelClass($m)
+    {
+        return $this->modelSettings[$m];
     }
 }

@@ -14,11 +14,16 @@
  * @var $model dektrium\rbac\models\Role
  */
 
+use dektrium\rbac\events\PermissionFormEvent;
+use dektrium\rbac\RbacWebModule;
 use kartik\select2\Select2;
+use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\JsExpression;
 use yii\widgets\ActiveForm;
-use yii\helpers\Html;
+
+
+$event = new PermissionFormEvent();
 
 ?>
 
@@ -61,6 +66,16 @@ use yii\helpers\Html;
         'multiple' => true
     ],
 ]) ?>
+
+<?php
+$this->context->module->trigger(RbacWebModule::EVENT_PERMISSION_FORM, $event);
+
+if (!empty($event->renderViews)) {
+    foreach ($event->renderViews as $view) {
+        echo $this->render($view, ['form' => $form, 'model' => $model]);
+    }
+}
+?>
 
 <?= Html::submitButton(Yii::t('rbac', 'Save'), ['class' => 'btn btn-success btn-block']) ?>
 
