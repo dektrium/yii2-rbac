@@ -140,7 +140,6 @@ abstract class ItemControllerAbstract extends Controller
     protected function performAjaxValidation(Model $model)
     {
         if (\Yii::$app->request->isAjax && $model->load(\Yii::$app->request->post())) {
-            \Yii::$app->response->format = Response::FORMAT_JSON;
             \Yii::$app->response->data = json_encode(ActiveForm::validate($model));
             \Yii::$app->end();
         }
