@@ -1,3 +1,6 @@
+ATTENTION: THIS PROJECT HAS BEEN ABANDONED
+------------------------------------------
+
 # Yii2-rbac [![Total Downloads](https://img.shields.io/packagist/dt/dektrium/yii2-rbac.svg?style=flat-square)](https://packagist.org/packages/dektrium/yii2-rbac) [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
 Yii2-rbac provides a way to manage your application's RBAC structure and includes following features:
