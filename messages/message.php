@@ -5,6 +5,7 @@ return [
     'messagePath' => __DIR__,
     'languages' => [
         'de',
+        'es',
         'fa-IR',
         'fi',
         'fr',
