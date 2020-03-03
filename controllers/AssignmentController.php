@@ -11,7 +11,7 @@
 
 namespace dektrium\rbac\controllers;
 
-use dektrium\rbac\models\Assignment;
+use dektrium\rbac\RbacWebModule as Module;
 use Yii;
 use yii\web\Controller;
 
@@ -20,6 +20,7 @@ use yii\web\Controller;
  */
 class AssignmentController extends Controller
 {
+    protected $modelClass = Module::MODEL_ASSIGNMENT;
     /**
      * Show form with auth items for user.
      * 
@@ -28,7 +29,7 @@ class AssignmentController extends Controller
     public function actionAssign($id)
     {
         $model = Yii::createObject([
-            'class'   => Assignment::className(),
+            'class'   => $this->module->getModelClass($this->modelClass),
             'user_id' => $id,
         ]);
         

@@ -14,6 +14,7 @@ namespace dektrium\rbac\controllers;
 use dektrium\rbac\components\DbManager;
 use dektrium\rbac\models\Rule;
 use dektrium\rbac\models\RuleSearch;
+use dektrium\rbac\RbacWebModule as Module;
 use yii\di\Instance;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -28,6 +29,7 @@ use yii\widgets\ActiveForm;
  */
 class RuleController extends Controller
 {
+    protected $modelClass = Module::MODEL_RULE;
     /**
      * @var string|DbManager The auth manager component ID.
      */
@@ -171,7 +173,7 @@ class RuleController extends Controller
     private function getModel($scenario)
     {
         return \Yii::createObject([
-            'class'    => Rule::className(),
+            'class'    => $this->module->getModelClass(MODULE::MODEL_RULE),
             'scenario' => $scenario,
         ]);
     }
@@ -182,7 +184,7 @@ class RuleController extends Controller
      */
     private function getSearchModel()
     {
-        return \Yii::createObject(RuleSearch::className());
+        return \Yii::createObject($this->module->getModelClass(MODULE::MODEL_RULE_SEARCH));
     }
 
     /**
