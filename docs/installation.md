@@ -21,11 +21,16 @@ $ composer require dektrium/yii2-rbac:1.0.0-alpha@dev
 Add rbac module to web application config file as follows:
 
 ```php
+'components' => [
+    'authManager' => [
+        'class' => 'dektrium\rbac\components\DbManager',
+        'cache' => 'yii\caching\FileCache', // optional
+    ],
 ...
-'modules' => [
-    ...
-    'rbac' => 'dektrium\rbac\RbacWebModule',
-    ...
+    'modules' => [
+        ...
+        'rbac' => 'dektrium\rbac\RbacWebModule',
+        ...
 ],
 ...
 ```
