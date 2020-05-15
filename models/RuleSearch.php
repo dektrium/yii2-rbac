@@ -86,11 +86,11 @@ class RuleSearch extends Rule
             ->from($this->authManager->ruleTable)
             ->orderBy(['name' => SORT_ASC])
             ->limit(10);
-        
+
         if ($searchQuery) {
             $query->where(['LIKE', 'LOWER(name)', mb_strtolower($searchQuery)]);
         }
 
-        return $query->all();
+        return $query->all($this->manager->db);
     }
 }
