@@ -91,6 +91,6 @@ class RuleSearch extends Rule
             $query->where(['LIKE', 'LOWER(name)', mb_strtolower($searchQuery)]);
         }
 
-        return $query->all();
+        return $query->all($this->authManager->db);
     }
 }
