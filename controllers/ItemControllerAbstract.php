@@ -81,7 +81,6 @@ abstract class ItemControllerAbstract extends Controller
         ]);
 
         $this->performAjaxValidation($model);
-
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         }
@@ -141,8 +140,10 @@ abstract class ItemControllerAbstract extends Controller
     {
         if (\Yii::$app->request->isAjax && $model->load(\Yii::$app->request->post())) {
             \Yii::$app->response->format = Response::FORMAT_JSON;
-            \Yii::$app->response->data = json_encode(ActiveForm::validate($model));
-            \Yii::$app->end();
+            //echo json_encode(ActiveForm::validate($model));
+            \Yii::$app->response->data   = ActiveForm::validate($model);
+            \Yii::$app->response->send();
+			\Yii::$app->end();
         }
     }
 }
