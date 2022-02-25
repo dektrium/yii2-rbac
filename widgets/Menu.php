@@ -11,7 +11,7 @@
 
 namespace dektrium\rbac\widgets;
 
-use yii\bootstrap\Nav;
+use yii\bootstrap4\Nav;
 
 /**
  * Menu widget.
@@ -59,7 +59,7 @@ class Menu extends Nav
                 'label' => \Yii::t('rbac', 'Create'),
                 'items' => [
                     [
-                        'label'   => \Yii::t('rbac', 'New user'),
+                        'label'   =>\ Yii::t('rbac', 'New user'),
                         'url'     => ['/user/admin/create'],
                         'visible' => $isUserModuleInstalled,
                     ],

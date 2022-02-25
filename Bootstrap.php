@@ -35,7 +35,6 @@ class Bootstrap implements BootstrapInterface
             $app->get('i18n')->translations['rbac*'] = [
                 'class'    => 'yii\i18n\PhpMessageSource',
                 'basePath' => __DIR__ . '/messages',
-                'sourceLanguage' => 'en-US',
             ];
         }
 
